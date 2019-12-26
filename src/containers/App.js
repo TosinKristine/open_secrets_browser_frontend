@@ -36,6 +36,8 @@ class App extends React.Component {
                   {...props}
                   loggedIn={this.handleLoggedIn}
                   loggedInEmail={this.handleLoggedInEmail}
+                  persistLogIn={this.state.loggedIn}
+                  persistLogInEmail={this.state.loggedInEmail}
                 ></Home>
               )}
             ></Route>

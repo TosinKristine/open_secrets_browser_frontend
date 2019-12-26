@@ -36,14 +36,20 @@ class Home extends Component {
     return (
       <div>
         <h1>Open Secrets Browser</h1>
-        <LogIn
-          loggedIn={this.handleLoggedIn}
-          loggedInEmail={this.handleLoggedInEmail}
-        ></LogIn>
-        <CreateNewUser
-          newUserName={this.handleNewUserName}
-          newUserEmail={this.handleNewUserEmail}
-        ></CreateNewUser>
+        {this.props.persistLogIn ? (
+          <h2>Welcome, {this.props.persistLogInEmail}</h2>
+        ) : (
+          <div>
+            <LogIn
+              loggedIn={this.handleLoggedIn}
+              loggedInEmail={this.handleLoggedInEmail}
+            ></LogIn>
+            <CreateNewUser
+              newUserName={this.handleNewUserName}
+              newUserEmail={this.handleNewUserEmail}
+            ></CreateNewUser>
+          </div>
+        )}
       </div>
     );
   }
