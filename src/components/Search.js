@@ -120,11 +120,6 @@ class Search extends Component {
           }
         );
       });
-    //
-  };
-
-  postToDatabase = e => {
-    console.log(this.state.candidate.candidate_name);
   };
 
   handleLettersSubmit = e => {
