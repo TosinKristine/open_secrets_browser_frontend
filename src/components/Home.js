@@ -19,6 +19,8 @@ class Home extends Component {
 
   handleLoggedInEmail = e => {
     this.setState({ loggedInEmail: e });
+    this.props.loggedIn(true);
+    this.props.loggedInEmail(e);
   };
 
   handleNewUserName = e => {
@@ -26,6 +28,8 @@ class Home extends Component {
   };
   handleNewUserEmail = e => {
     this.setState({ newUserEmail: e, loggedIn: true, loggedInEmail: e });
+    this.props.loggedIn(true);
+    this.props.loggedInEmail(e);
   };
 
   render() {

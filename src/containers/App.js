@@ -7,13 +7,38 @@ import User from "../components/User";
 import BrowseFavorites from "../components/BrowseFavorites";
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      loggedIn: false,
+      loggedInEmail: ""
+    };
+  }
+
+  handleLoggedIn = e => {
+    this.setState({ loggedIn: e });
+  };
+  handleLoggedInEmail = e => {
+    this.setState({ loggedInEmail: e });
+  };
+
   render() {
     return (
       <div>
         <Router>
           <div>
-            <NavBar />
-            <Route exact path="/" component={Home}></Route>
+            <NavBar loggedIn={this.state.loggedIn} />
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <Home
+                  {...props}
+                  loggedIn={this.handleLoggedIn}
+                  loggedInEmail={this.handleLoggedInEmail}
+                ></Home>
+              )}
+            ></Route>
             <Route exact path="/search" component={Search}></Route>
             <Route exact path="/user" component={User}></Route>
             <Route
