@@ -21,8 +21,21 @@ class LogIn extends Component {
 
   handleSubmitLogIn = e => {
     e.preventDefault();
-    this.props.loggedInEmail(this.state.loggedInEmail);
-    this.props.loggedIn(true);
+    fetch("http://localhost:4000/users")
+      .then(resp => resp.json())
+      .then(users => {
+        let foundUser = users.filter(
+          user => user.email === this.state.loggedInEmail
+        );
+        if (foundUser.length !== 0) {
+          this.props.loggedInEmail(this.state.loggedInEmail);
+          this.props.loggedIn(true);
+        } else {
+          alert(
+            "That email is not in our system. Please try again or create an account."
+          );
+        }
+      });
   };
 
   checkLoggedIn = () => {
