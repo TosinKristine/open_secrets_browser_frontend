@@ -107,6 +107,7 @@ class UserInfo extends Component {
           <ul>
             {this.state.user.favorites.map((favorite, index) => (
               <li key={index}>
+                {console.log(favorite)}
                 {favorite.candidate.cand_name} (ID: {favorite.candidate.cid})
               </li>
             ))}

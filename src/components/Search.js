@@ -70,8 +70,9 @@ class Search extends Component {
                 "Content-Type": "application/json"
               },
               body: JSON.stringify({
+                ...this.state.candidate,
                 cand_name: this.state.candidate.candidate_name,
-                cid: this.state.candidate.candidiate_id,
+                cid: this.state.candidate.candidate_id,
                 cycle: this.state.candidate.candidate_cycle
               })
             })
