@@ -64,7 +64,12 @@ class App extends React.Component {
             <Route
               exact
               path="/browsefavorites"
-              component={BrowseFavorites}
+              render={props => (
+                <BrowseFavorites
+                  {...props}
+                  userId={this.state.loggedInId}
+                ></BrowseFavorites>
+              )}
             ></Route>
           </div>
         </Router>
