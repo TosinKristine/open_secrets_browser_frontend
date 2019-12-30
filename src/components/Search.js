@@ -114,22 +114,22 @@ class Search extends Component {
     //   .catch(alert("That's not a state! Try again"));
   };
 
-  favorited = candidate => {
+  favorited = candidateId => {
     console.log("favorite! This has to be set up...");
-    console.log(candidate);
-    // fetch("http://localhost:4000/favorites", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //             "Content-Type": "application/json"
-    //   },
-    //   body: {
-    //     user_id: "x",
-    //     candidate_id: "x"
-    //   }
-    // })
-    // .then(resp => resp.json())
-    // .then(json => console.log(json))
+    console.log(candidateId);
+    fetch("http://localhost:4000/favorites", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user_id: this.props.userId,
+        candidate_id: candidateId
+      })
+    })
+      .then(resp => resp.json())
+      .then(json => console.log(json));
   };
 
   render() {

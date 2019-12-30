@@ -47,7 +47,13 @@ class App extends React.Component {
                 ></Home>
               )}
             ></Route>
-            <Route exact path="/search" component={Search}></Route>
+            <Route
+              exact
+              path="/search"
+              render={props => (
+                <Search {...props} userId={this.state.loggedInId}></Search>
+              )}
+            ></Route>
             <Route
               exact
               path="/user"
