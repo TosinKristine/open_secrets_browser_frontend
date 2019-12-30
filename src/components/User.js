@@ -69,7 +69,17 @@ class UserInfo extends Component {
   };
 
   deleteUser = () => {
-    console.log("lets delete!");
+    fetch("http://localhost:4000/users/" + this.state.user.userID, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id: this.state.user.userID
+      })
+    })
+      .then(resp => resp.json())
+      .then(json => this.props.deleted(true));
   };
 
   closeModal = () => {

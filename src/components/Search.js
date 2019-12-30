@@ -116,8 +116,6 @@ class Search extends Component {
   };
 
   favorited = candidateId => {
-    console.log("favorite! This has to be set up...");
-    console.log(candidateId);
     fetch("http://localhost:4000/favorites", {
       method: "POST",
       headers: {
