@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 class CandidateCard extends Component {
   contributors = () => {
-    return this.props.contributors.map(contributor => {
+    return this.props.contributors.map((contributor, index) => {
       this.saveContributors(contributor);
       return (
-        <div>
+        <div key={index}>
           <h4>Contributor name: {contributor.org_name}</h4>
           <h4>Total donated: ${contributor.total}</h4>
           <h4>Amount from PACs: ${contributor.pacs}</h4>
@@ -17,8 +17,6 @@ class CandidateCard extends Component {
   };
 
   saveContributors = contributor => {
-    console.log("hmm...");
-    console.log(contributor);
     fetch("http://localhost:4000/contributors", {
       method: "POST",
       headers: {
@@ -47,9 +45,7 @@ class CandidateCard extends Component {
           <br></br>
           <h2>Top Contributors:</h2>
           {this.contributors()}
-          <button
-            onClick={() => this.props.favorited(this.props.candidate_name)}
-          >
+          <button onClick={() => this.props.favorited(this.props.id)}>
             Save Candidate to Your Favorites
           </button>
         </div>

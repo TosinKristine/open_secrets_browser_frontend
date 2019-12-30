@@ -11,7 +11,8 @@ class App extends React.Component {
     super();
     this.state = {
       loggedIn: false,
-      loggedInEmail: ""
+      loggedInEmail: "",
+      loggedInId: ""
     };
   }
 
@@ -20,6 +21,10 @@ class App extends React.Component {
   };
   handleLoggedInEmail = e => {
     this.setState({ loggedInEmail: e });
+  };
+
+  handleLoggedInId = e => {
+    this.setState({ loggedInId: e });
   };
 
   render() {
@@ -38,6 +43,7 @@ class App extends React.Component {
                   loggedInEmail={this.handleLoggedInEmail}
                   persistLogIn={this.state.loggedIn}
                   persistLogInEmail={this.state.loggedInEmail}
+                  loggedInId={this.handleLoggedInId}
                 ></Home>
               )}
             ></Route>

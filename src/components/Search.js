@@ -58,30 +58,11 @@ class Search extends Component {
             };
           }
         );
-
-        // let contributors = data.response.contributors.contributor;
-        // let contributors = data.response.contributors.contributor.map(
-        //   contributor => {
-        //     return (
-        //       <div>
-        //         <h4>Contributor name: {contributor["@attributes"].org_name}</h4>
-        //         <h4>Total donated: ${contributor["@attributes"].total}</h4>
-        //         <h4>Amount from PACs: ${contributor["@attributes"].pacs}</h4>
-        //         <h4>
-        //           Amount from individuals: ${contributor["@attributes"].indivs}
-        //         </h4>
-        //         <br></br>
-        //       </div>
-        //     );
-        //   }
-        // );
         this.setState(
           {
             contributors: contributors
           },
           () => {
-            // console.log(this.state.candidate.candidate_name);
-            // console.log(this.state.contributors);
             fetch("http://localhost:4000/candidates", {
               method: "POST",
               headers: {
@@ -136,6 +117,19 @@ class Search extends Component {
   favorited = candidate => {
     console.log("favorite! This has to be set up...");
     console.log(candidate);
+    // fetch("http://localhost:4000/favorites", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //             "Content-Type": "application/json"
+    //   },
+    //   body: {
+    //     user_id: "x",
+    //     candidate_id: "x"
+    //   }
+    // })
+    // .then(resp => resp.json())
+    // .then(json => console.log(json))
   };
 
   render() {

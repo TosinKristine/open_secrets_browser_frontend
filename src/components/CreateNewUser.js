@@ -35,10 +35,11 @@ class CreateNewUser extends Component {
       })
     })
       .then(resp => resp.json())
-      .then(json => console.log(json));
-
-    this.props.newUserName(this.state.newUserName);
-    this.props.newUserEmail(this.state.newUserEmail);
+      .then(json => {
+        this.props.newUserName(this.state.newUserName);
+        this.props.newUserEmail(this.state.newUserEmail);
+        this.props.newUserId(json.id);
+      });
   };
 
   renderNewUserForm = e => {

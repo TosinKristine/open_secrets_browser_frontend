@@ -23,6 +23,10 @@ class Home extends Component {
     this.props.loggedInEmail(e);
   };
 
+  handleLoggedInId = e => {
+    this.props.loggedInId(e);
+  };
+
   handleNewUserName = e => {
     this.setState({ newUserName: e });
   };
@@ -43,10 +47,12 @@ class Home extends Component {
             <LogIn
               loggedIn={this.handleLoggedIn}
               loggedInEmail={this.handleLoggedInEmail}
+              loggedInId={this.handleLoggedInId}
             ></LogIn>
             <CreateNewUser
               newUserName={this.handleNewUserName}
               newUserEmail={this.handleNewUserEmail}
+              newUserId={this.handleLoggedInId}
             ></CreateNewUser>
           </div>
         )}

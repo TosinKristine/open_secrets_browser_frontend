@@ -30,6 +30,7 @@ class LogIn extends Component {
         if (foundUser.length !== 0) {
           this.props.loggedInEmail(this.state.loggedInEmail);
           this.props.loggedIn(true);
+          this.props.loggedInId(foundUser[0].id);
         } else {
           alert(
             "That email is not in our system. Please try again or create an account."
