@@ -12,7 +12,8 @@ class Search extends Component {
       candidate: {
         candidate_name: "",
         candidate_id: "",
-        candidate_cycle: ""
+        candidate_cycle: "",
+        id: ""
       },
       contributors: []
     };
@@ -79,21 +80,29 @@ class Search extends Component {
             contributors: contributors
           },
           () => {
-            console.log(this.state.candidate.candidate_name);
-            // fetch("http://localhost:4000/candidates", {
-            //   method: "POST",
-            //   headers: {
-            //     Accept: "application/json",
-            //     "Content-Type": "application/json"
-            //   },
-            //   body: JSON.stringify({
-            //     cand_name: this.state.candidate.candidate_name,
-            //     cid: this.state.candidate.candidiate_id,
-            //     cycle: this.state.candidate.candidate_cycle
-            //   })
-            // })
-            //   .then(resp => resp.json())
-            //   .then(json => console.log(json));
+            // console.log(this.state.candidate.candidate_name);
+            // console.log(this.state.contributors);
+            fetch("http://localhost:4000/candidates", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                cand_name: this.state.candidate.candidate_name,
+                cid: this.state.candidate.candidiate_id,
+                cycle: this.state.candidate.candidate_cycle
+              })
+            })
+              .then(resp => resp.json())
+              .then(json => {
+                this.setState({
+                  candidate: {
+                    ...this.state.candidate,
+                    id: json.id
+                  }
+                });
+              });
           }
         );
       });
@@ -166,6 +175,7 @@ class Search extends Component {
           candidate_cycle={this.state.candidate.candidate_cycle}
           contributors={this.state.contributors}
           favorited={this.favorited}
+          id={this.state.candidate.id}
         />
       </div>
     );

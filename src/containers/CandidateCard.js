@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class CandidateCard extends Component {
   contributors = () => {
     return this.props.contributors.map(contributor => {
+      this.saveContributors(contributor);
       return (
         <div>
           <h4>Contributor name: {contributor.org_name}</h4>
@@ -12,6 +13,25 @@ class CandidateCard extends Component {
           <br></br>
         </div>
       );
+    });
+  };
+
+  saveContributors = contributor => {
+    console.log("hmm...");
+    console.log(contributor);
+    fetch("http://localhost:4000/contributors", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        org_name: contributor.org_name,
+        total: contributor.total,
+        pacs: contributor.pacs,
+        indivs: contributor.indivs,
+        candidate_id: this.props.id
+      })
     });
   };
 
