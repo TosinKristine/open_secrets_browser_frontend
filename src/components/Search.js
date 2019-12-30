@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CandidateCard from "./CandidateCard";
-import StateResults from "./StateResults";
+import CandidateCard from "../containers/CandidateCard";
+import StateResults from "../containers/StateResults";
 
 class Search extends Component {
   constructor() {
@@ -46,41 +46,54 @@ class Search extends Component {
             candidate_cycle: candidate_cycle
           }
         });
+
         let contributors = data.response.contributors.contributor.map(
           contributor => {
-            return (
-              <div>
-                <h4>Contributor name: {contributor["@attributes"].org_name}</h4>
-                <h4>Total donated: ${contributor["@attributes"].total}</h4>
-                <h4>Amount from PACs: ${contributor["@attributes"].pacs}</h4>
-                <h4>
-                  Amount from individuals: ${contributor["@attributes"].indivs}
-                </h4>
-                <br></br>
-              </div>
-            );
+            return {
+              org_name: contributor["@attributes"].org_name,
+              total: contributor["@attributes"].total,
+              pacs: contributor["@attributes"].pacs,
+              indivs: contributor["@attributes"].indivs
+            };
           }
         );
+
+        // let contributors = data.response.contributors.contributor;
+        // let contributors = data.response.contributors.contributor.map(
+        //   contributor => {
+        //     return (
+        //       <div>
+        //         <h4>Contributor name: {contributor["@attributes"].org_name}</h4>
+        //         <h4>Total donated: ${contributor["@attributes"].total}</h4>
+        //         <h4>Amount from PACs: ${contributor["@attributes"].pacs}</h4>
+        //         <h4>
+        //           Amount from individuals: ${contributor["@attributes"].indivs}
+        //         </h4>
+        //         <br></br>
+        //       </div>
+        //     );
+        //   }
+        // );
         this.setState(
           {
             contributors: contributors
           },
           () => {
             console.log(this.state.candidate.candidate_name);
-            fetch("http://localhost:4000/candidates", {
-              method: "POST",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                cand_name: this.state.candidate.candidate_name,
-                cid: this.state.candidate.candidiate_id,
-                cycle: this.state.candidate.candidate_cycle
-              })
-            })
-              .then(resp => resp.json())
-              .then(json => console.log(json));
+            // fetch("http://localhost:4000/candidates", {
+            //   method: "POST",
+            //   headers: {
+            //     Accept: "application/json",
+            //     "Content-Type": "application/json"
+            //   },
+            //   body: JSON.stringify({
+            //     cand_name: this.state.candidate.candidate_name,
+            //     cid: this.state.candidate.candidiate_id,
+            //     cycle: this.state.candidate.candidate_cycle
+            //   })
+            // })
+            //   .then(resp => resp.json())
+            //   .then(json => console.log(json));
           }
         );
       });
@@ -109,6 +122,11 @@ class Search extends Component {
         });
       });
     //   .catch(alert("That's not a state! Try again"));
+  };
+
+  favorited = candidate => {
+    console.log("favorite! This has to be set up...");
+    console.log(candidate);
   };
 
   render() {
@@ -147,6 +165,7 @@ class Search extends Component {
           candidate_id={this.state.candidate.candidate_id}
           candidate_cycle={this.state.candidate.candidate_cycle}
           contributors={this.state.contributors}
+          favorited={this.favorited}
         />
       </div>
     );
