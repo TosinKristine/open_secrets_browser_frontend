@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import CandidateCard from "./CandidateCard";
+import StateResults from "./StateResults";
 
 class Search extends Component {
   constructor() {
@@ -15,44 +17,6 @@ class Search extends Component {
       contributors: []
     };
   }
-
-  //   componentDidMount() {
-  //     fetch(
-  //       "https://www.opensecrets.org/api/?method=candContrib&cid=N00004724&apikey=a192665c31c48bfd2207ff83594a15d2&output=json"
-  //     )
-  //       .then(resp => resp.json())
-  //       .then(data => {
-  //         let candidate_name =
-  //           data.response.contributors["@attributes"].cand_name;
-  //         let candidate_id = data.response.contributors["@attributes"].cid;
-  //         let candidate_cycle = data.response.contributors["@attributes"].cycle;
-  //         this.setState({
-  //           candidate: {
-  //             candidate_name: candidate_name,
-  //             candidate_id: candidate_id,
-  //             candidate_cycle: candidate_cycle
-  //           }
-  //         });
-  //         let contributors = data.response.contributors.contributor.map(
-  //           contributor => {
-  //             return (
-  //               <div>
-  //                 <h4>Contributor name: {contributor["@attributes"].org_name}</h4>
-  //                 <h4>Total donated: ${contributor["@attributes"].total}</h4>
-  //                 <h4>Amount from PACs: ${contributor["@attributes"].pacs}</h4>
-  //                 <h4>
-  //                   Amount from individuals: ${contributor["@attributes"].indivs}
-  //                 </h4>
-  //                 <br></br>
-  //               </div>
-  //             );
-  //           }
-  //         );
-  //         this.setState({
-  //           contributors: contributors
-  //         });
-  //       });
-  //   }
 
   handleCandidateChange = e => {
     this.setState({ candidate_search: e.target.value });
@@ -163,8 +127,7 @@ class Search extends Component {
           </label>
         </form>
 
-        <h2>Search results by state:</h2>
-        {this.state.state_search_results}
+        <StateResults search_results={this.state.state_search_results} />
 
         <h1>Find financial information about a candidate</h1>
         <form onSubmit={this.handleCandidateSubmit}>
@@ -179,12 +142,12 @@ class Search extends Component {
           </label>
         </form>
 
-        <h1>Candidate: {this.state.candidate.candidate_name}</h1>
-        <h3>Candidate ID: {this.state.candidate.candidate_id}</h3>
-        <h3>Candidate Cycle: {this.state.candidate.candidate_cycle}</h3>
-        <br></br>
-        <h2>Top Contributors:</h2>
-        {this.state.contributors}
+        <CandidateCard
+          candidate_name={this.state.candidate.candidate_name}
+          candidate_id={this.state.candidate.candidate_id}
+          candidate_cycle={this.state.candidate.candidate_cycle}
+          contributors={this.state.contributors}
+        />
       </div>
     );
   }

@@ -40,7 +40,6 @@ class Modal extends Component {
     })
       .then(response => response.json())
       .then(json => {
-        //   console.log(this.state.editedName)
         this.props.newUserName(this.state.editedName);
         this.props.newUserEmail(this.state.editedEmail);
       });
