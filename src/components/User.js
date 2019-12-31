@@ -61,7 +61,6 @@ class UserInfo extends Component {
             <span className="close" onClick={this.closeModal}>
               X
             </span>
-            <p>ta daa</p>
           </div>
         </div>
       );
@@ -106,6 +105,30 @@ class UserInfo extends Component {
     });
   };
 
+  deleteFavorite = favorite => {
+    console.log(favorite);
+    fetch("http://localhost:4000/favorites/" + favorite.id, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id: favorite.id
+      })
+    })
+      .then(resp => resp.json())
+      .then(json => {
+        this.setState({
+          user: {
+            ...this.state.user,
+            favorites: this.state.user.favorites.filter(each_favorite => {
+              return each_favorite !== favorite;
+            })
+          }
+        });
+      });
+  };
+
   render() {
     return (
       <div>
@@ -117,8 +140,8 @@ class UserInfo extends Component {
           <ul>
             {this.state.user.favorites.map((favorite, index) => (
               <li key={index}>
-                {console.log(favorite)}
-                {favorite.candidate.cand_name} (ID: {favorite.candidate.cid})
+                {favorite.candidate.cand_name} (ID: {favorite.candidate.cid}){" "}
+                <button onClick={() => this.deleteFavorite(favorite)}>x</button>
               </li>
             ))}
           </ul>
