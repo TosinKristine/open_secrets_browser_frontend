@@ -91,6 +91,7 @@ class App extends React.Component {
                     deleted={this.handleDelete}
                     userFavorites={this.state.loggedInFavorites}
                     username={this.state.loggedInUsername}
+                    userID={this.state.loggedInId}
                   ></User>
                 )}
               ></Route>

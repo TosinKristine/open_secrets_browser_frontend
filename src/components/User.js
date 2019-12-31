@@ -18,6 +18,16 @@ class UserInfo extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({
+      user: {
+        userID: this.props.userID,
+        userName: this.props.username,
+        userEmail: this.props.userEmail,
+        favorites: this.props.userFavorites
+      }
+    });
+  }
   // componentDidMount() {
   //   fetch("http://localhost:4000/users")
   //     .then(resp => resp.json())
@@ -135,7 +145,7 @@ class UserInfo extends Component {
   };
 
   eachFavorite = () => {
-    return this.props.userFavorites.map((favorite, index) => {
+    return this.state.user.favorites.map((favorite, index) => {
       return (
         <li key={index}>
           {favorite.candidate.cand_name} (ID: {favorite.candidate.cid})
@@ -152,8 +162,8 @@ class UserInfo extends Component {
       <div>
         <div className="userInfo">
           <h1>User info...</h1>
-          <h2>Your name: {this.props.username}</h2>
-          <h3>Your email:{this.props.userEmail}</h3>
+          <h2>Your name: {this.state.user.userName}</h2>
+          <h3>Your email:{this.state.user.userEmail}</h3>
           <h3>Your favorite searches:</h3>
           <ul>{this.eachFavorite()}</ul>
         </div>
