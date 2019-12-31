@@ -27,40 +27,6 @@ class UserInfo extends Component {
         favorites: this.props.userFavorites
       }
     });
-  }
-  // componentDidMount() {
-  //   fetch("http://localhost:4000/users")
-  //     .then(resp => resp.json())
-  //     .then(users => {
-  //       users;
-  //       // let foundUser = users.filter(
-  //       //   user => user.email === this.props.userEmail
-  //       // );
-  //       // if (foundUser.length !== 0) {
-  //       //   this.setState({
-  //       //     user: {
-  //       //       ...this.state.user,
-  //       //       userID: foundUser[0].id,
-  //       //       userName: foundUser[0].name,
-  //       //       userEmail: foundUser[0].email
-  //       //       // favorites: foundUser[0].favorites
-  //       //     }
-  //       //   });
-  //       // } else {
-  //       //   this.setState({
-  //       //     user: {
-  //       //       ...this.state.user,
-  //       //       userID: 0,
-  //       //       userName: "test user",
-  //       //       userEmail: "testuser@email.com"
-  //       //       // favorites: []
-  //       //     }
-  //       //   });
-  //       // }
-  //       // console.log(this.state.user.favorites);
-  //       // this.props.userFavorites(this.state.user.favorites);
-  //     });
-  // }
 
   editUserInfo = () => {
     this.setState({
