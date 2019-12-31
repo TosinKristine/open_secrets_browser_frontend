@@ -5,7 +5,8 @@ class Favorites extends Component {
     super();
     this.state = {
       favorites: [],
-      postedFavorites: []
+      postedFavorites: [],
+      userFavorites: []
     };
   }
 
@@ -22,14 +23,23 @@ class Favorites extends Component {
       })
     })
       .then(resp => resp.json())
-      .then(json => console.log(json));
+      .then(json => {
+        console.log(json);
+        this.setState(
+          { userFavorites: this.state.userFavorites.concat(json) },
+          this.props.addUserFavorites(this.state.userFavorites)
+        );
+      });
   };
 
   componentDidMount() {
     fetch("http://localhost:4000/favorites")
       .then(resp => resp.json())
       .then(favorites => {
-        this.setState({ favorites: favorites });
+        this.setState({
+          favorites: favorites,
+          userFavorites: this.props.userFavorites
+        });
         this.organizeFavorites();
       });
   }

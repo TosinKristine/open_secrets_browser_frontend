@@ -45,6 +45,20 @@ class App extends React.Component {
     });
   };
 
+  handleAddFavorite = e => {
+    console.log(e);
+    this.setState({
+      loggedInFavorites: this.state.loggedInFavorites.concat(e)
+    });
+  };
+
+  handleNewUserFavorite = e => {
+    console.log(e);
+    this.setState({
+      loggedInFavorites: this.state.loggedInFavorites.concat(e)
+    });
+  };
+
   // handleFavorites = e => {
   //   this.setState({
   //     loggedInFavorites: e
@@ -78,7 +92,11 @@ class App extends React.Component {
                 exact
                 path="/search"
                 render={props => (
-                  <Search {...props} userId={this.state.loggedInId}></Search>
+                  <Search
+                    {...props}
+                    userId={this.state.loggedInId}
+                    addFavorite={this.handleAddFavorite}
+                  ></Search>
                 )}
               ></Route>
               <Route
@@ -103,6 +121,7 @@ class App extends React.Component {
                     {...props}
                     userId={this.state.loggedInId}
                     userFavorites={this.state.loggedInFavorites}
+                    addUserFavorites={this.handleNewUserFavorite}
                   ></BrowseFavorites>
                 )}
               ></Route>

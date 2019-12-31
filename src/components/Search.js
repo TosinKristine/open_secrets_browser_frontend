@@ -128,7 +128,10 @@ class Search extends Component {
       })
     })
       .then(resp => resp.json())
-      .then(json => console.log(json));
+      .then(json => {
+        console.log(json);
+        this.props.addFavorite(json);
+      });
   };
 
   render() {
