@@ -12,7 +12,8 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       loggedInEmail: "",
-      loggedInId: ""
+      loggedInId: "",
+      loggedInFavorites: []
     };
   }
 
@@ -31,6 +32,18 @@ class App extends React.Component {
     this.setState({ loggedIn: false });
   };
 
+  handleApp = e => {
+    this.setState({
+      loggedInFavorites: e
+    });
+  };
+
+  // handleFavorites = e => {
+  //   this.setState({
+  //     loggedInFavorites: e
+  //   });
+  // };
+
   render() {
     return (
       <div>
@@ -44,6 +57,7 @@ class App extends React.Component {
                 render={props => (
                   <Home
                     {...props}
+                    handleApp={this.handleApp}
                     loggedIn={this.handleLoggedIn}
                     loggedInEmail={this.handleLoggedInEmail}
                     persistLogIn={this.state.loggedIn}
@@ -67,6 +81,7 @@ class App extends React.Component {
                     {...props}
                     userEmail={this.state.loggedInEmail}
                     deleted={this.handleDelete}
+                    userFavorites={this.handleFavorites}
                   ></User>
                 )}
               ></Route>
@@ -77,6 +92,7 @@ class App extends React.Component {
                   <BrowseFavorites
                     {...props}
                     userId={this.state.loggedInId}
+                    // userFavorites={this.state.loggedInFavorites}
                   ></BrowseFavorites>
                 )}
               ></Route>
@@ -91,6 +107,7 @@ class App extends React.Component {
                 render={props => (
                   <Home
                     {...props}
+                    handleApp={this.handleApp}
                     loggedIn={this.handleLoggedIn}
                     loggedInEmail={this.handleLoggedInEmail}
                     persistLogIn={this.state.loggedIn}

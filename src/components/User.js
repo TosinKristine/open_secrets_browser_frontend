@@ -44,6 +44,8 @@ class UserInfo extends Component {
             }
           });
         }
+        console.log(this.state.user.favorites);
+        this.props.userFavorites(this.state.user.favorites);
       });
   }
 

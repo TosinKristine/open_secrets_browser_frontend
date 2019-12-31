@@ -27,6 +27,9 @@ class Home extends Component {
     this.props.loggedInId(e);
   };
 
+  handleHome = e => {
+    this.props.handleApp(e);
+  };
   handleNewUserName = e => {
     this.setState({ newUserName: e });
   };
@@ -48,6 +51,7 @@ class Home extends Component {
               loggedIn={this.handleLoggedIn}
               loggedInEmail={this.handleLoggedInEmail}
               loggedInId={this.handleLoggedInId}
+              onHandleHome={this.handleHome}
             ></LogIn>
             <CreateNewUser
               newUserName={this.handleNewUserName}

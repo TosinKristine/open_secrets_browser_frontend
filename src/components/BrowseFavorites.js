@@ -4,9 +4,20 @@ class Favorites extends Component {
   constructor() {
     super();
     this.state = {
-      favorites: []
+      favorites: [],
+      renderedFavorites: []
     };
   }
+
+  searchLoggedInFavorites = () => {
+    let loggedFavorites = this.props.userFavorites.map(favorite => {
+      console.log(this.props.userFavorites);
+      return favorite.cid;
+    });
+    console.log("logged favorites..." + loggedFavorites);
+    return loggedFavorites;
+  };
+
   addToOwnFavorites = candidateId => {
     fetch("http://localhost:4000/favorites", {
       method: "POST",
@@ -21,6 +32,52 @@ class Favorites extends Component {
     })
       .then(resp => resp.json())
       .then(json => console.log(json));
+  };
+
+  groupFavorites = () => {
+    let groupedFavorites = [];
+    let renderedFavorites = [];
+    this.state.favorites.map(favorite => {
+      if (!groupedFavorites.includes(favorite.candidate.cand_name)) {
+        groupedFavorites.push(favorite.candidate.cand_name);
+        renderedFavorites.push({
+          candidate_name: favorite.candidate.cand_name,
+          cid: favorite.candidate.cid
+        });
+      }
+    });
+
+    // console.log(groupedFavorites);
+    // console.log(renderedFavorites);
+    this.setState({ renderedFavorites: renderedFavorites });
+  };
+
+  renderGroupedFavorites = () => {
+    return this.state.renderedFavorites.map((favorite, index) => {
+      return (
+        <div key={index}>
+          <h2>Candidate: {favorite.candidate_name}</h2>
+          <h3>CID: {favorite.cid}</h3>
+          {this.searchLoggedInFavorites()}
+          <button
+            onClick={() => {
+              this.addToOwnFavorites(favorite.candidate_id);
+            }}
+          >
+            Add to Your Favorites
+          </button>
+
+          <br></br>
+        </div>
+      );
+    });
+    // return this.state.groupedFavorites.map((favorite, index) => {
+    //   return (
+    //     <div key={index}>
+    //       <h2>{favorite}</h2>
+    //     </div>
+    //   );
+    // });
   };
 
   renderAllFavorites = () => {
@@ -47,13 +104,19 @@ class Favorites extends Component {
   componentDidMount() {
     fetch("http://localhost:4000/favorites")
       .then(resp => resp.json())
-      .then(favorites => this.setState({ favorites: favorites }));
+      .then(favorites => {
+        this.setState({ favorites: favorites });
+        this.groupFavorites();
+      });
   }
   render() {
     return (
       <div>
         <h1>Favorites</h1>
-        {this.renderAllFavorites()}
+        {/* {this.renderAllFavorites()} */}
+        {this.state.renderedFavorites.length !== 0
+          ? this.renderGroupedFavorites()
+          : null}
       </div>
     );
   }
