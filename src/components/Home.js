@@ -30,6 +30,10 @@ class Home extends Component {
   handleHome = e => {
     this.props.handleApp(e);
   };
+
+  handleUsername = e => {
+    this.props.username(e);
+  };
   handleNewUserName = e => {
     this.setState({ newUserName: e });
   };
@@ -52,6 +56,7 @@ class Home extends Component {
               loggedInEmail={this.handleLoggedInEmail}
               loggedInId={this.handleLoggedInId}
               onHandleHome={this.handleHome}
+              loggedInUsername={this.handleUsername}
             ></LogIn>
             <CreateNewUser
               newUserName={this.handleNewUserName}

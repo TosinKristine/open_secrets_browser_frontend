@@ -13,7 +13,8 @@ class App extends React.Component {
       loggedIn: false,
       loggedInEmail: "",
       loggedInId: "",
-      loggedInFavorites: []
+      loggedInFavorites: [],
+      loggedInUsername: ""
     };
   }
 
@@ -35,6 +36,12 @@ class App extends React.Component {
   handleApp = e => {
     this.setState({
       loggedInFavorites: e
+    });
+  };
+
+  handleUsername = e => {
+    this.setState({
+      loggedInUsername: e
     });
   };
 
@@ -63,6 +70,7 @@ class App extends React.Component {
                     persistLogIn={this.state.loggedIn}
                     persistLogInEmail={this.state.loggedInEmail}
                     loggedInId={this.handleLoggedInId}
+                    username={this.handleUsername}
                   ></Home>
                 )}
               ></Route>
@@ -81,7 +89,8 @@ class App extends React.Component {
                     {...props}
                     userEmail={this.state.loggedInEmail}
                     deleted={this.handleDelete}
-                    userFavorites={this.handleFavorites}
+                    userFavorites={this.state.loggedInFavorites}
+                    username={this.state.loggedInUsername}
                   ></User>
                 )}
               ></Route>
@@ -92,7 +101,7 @@ class App extends React.Component {
                   <BrowseFavorites
                     {...props}
                     userId={this.state.loggedInId}
-                    // userFavorites={this.state.loggedInFavorites}
+                    userFavorites={this.state.loggedInFavorites}
                   ></BrowseFavorites>
                 )}
               ></Route>
@@ -113,6 +122,7 @@ class App extends React.Component {
                     persistLogIn={this.state.loggedIn}
                     persistLogInEmail={this.state.loggedInEmail}
                     loggedInId={this.handleLoggedInId}
+                    username={this.handleUsername}
                   ></Home>
                 )}
               ></Route>

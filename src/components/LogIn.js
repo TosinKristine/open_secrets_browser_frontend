@@ -31,6 +31,7 @@ class LogIn extends Component {
           this.props.loggedInEmail(this.state.loggedInEmail);
           this.props.loggedIn(true);
           this.props.loggedInId(foundUser[0].id);
+          this.props.loggedInUsername(foundUser[0].name);
           this.props.onHandleHome(foundUser[0].favorites);
         } else {
           alert(

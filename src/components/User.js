@@ -11,43 +11,46 @@ class UserInfo extends Component {
         userName: "",
         userEmail: "",
         favorites: []
+        // favorites: this.props.userFavorites
+        // favorites: []
       },
       showEditForm: false
     };
   }
 
-  componentDidMount() {
-    fetch("http://localhost:4000/users")
-      .then(resp => resp.json())
-      .then(users => {
-        let foundUser = users.filter(
-          user => user.email === this.props.userEmail
-        );
-        if (foundUser.length !== 0) {
-          this.setState({
-            user: {
-              ...this.state.user,
-              userID: foundUser[0].id,
-              userName: foundUser[0].name,
-              userEmail: foundUser[0].email,
-              favorites: foundUser[0].favorites
-            }
-          });
-        } else {
-          this.setState({
-            user: {
-              ...this.state.user,
-              userID: 0,
-              userName: "test user",
-              userEmail: "testuser@email.com",
-              favorites: []
-            }
-          });
-        }
-        console.log(this.state.user.favorites);
-        this.props.userFavorites(this.state.user.favorites);
-      });
-  }
+  // componentDidMount() {
+  //   fetch("http://localhost:4000/users")
+  //     .then(resp => resp.json())
+  //     .then(users => {
+  //       users;
+  //       // let foundUser = users.filter(
+  //       //   user => user.email === this.props.userEmail
+  //       // );
+  //       // if (foundUser.length !== 0) {
+  //       //   this.setState({
+  //       //     user: {
+  //       //       ...this.state.user,
+  //       //       userID: foundUser[0].id,
+  //       //       userName: foundUser[0].name,
+  //       //       userEmail: foundUser[0].email
+  //       //       // favorites: foundUser[0].favorites
+  //       //     }
+  //       //   });
+  //       // } else {
+  //       //   this.setState({
+  //       //     user: {
+  //       //       ...this.state.user,
+  //       //       userID: 0,
+  //       //       userName: "test user",
+  //       //       userEmail: "testuser@email.com"
+  //       //       // favorites: []
+  //       //     }
+  //       //   });
+  //       // }
+  //       // console.log(this.state.user.favorites);
+  //       // this.props.userFavorites(this.state.user.favorites);
+  //     });
+  // }
 
   editUserInfo = () => {
     this.setState({
@@ -131,22 +134,28 @@ class UserInfo extends Component {
       });
   };
 
+  eachFavorite = () => {
+    return this.props.userFavorites.map((favorite, index) => {
+      return (
+        <li key={index}>
+          {favorite.candidate.cand_name} (ID: {favorite.candidate.cid})
+          <button onClick={() => console.log("delete this", favorite)}>
+            x
+          </button>
+        </li>
+      );
+    });
+  };
+
   render() {
     return (
       <div>
         <div className="userInfo">
-          <h1>User Info</h1>
-          <h2>Your Name: {this.state.user.userName}</h2>
-          <h3>Your email: {this.state.user.userEmail}</h3>
-          <h3>Your favorite searches: </h3>
-          <ul>
-            {this.state.user.favorites.map((favorite, index) => (
-              <li key={index}>
-                {favorite.candidate.cand_name} (ID: {favorite.candidate.cid}){" "}
-                <button onClick={() => this.deleteFavorite(favorite)}>x</button>
-              </li>
-            ))}
-          </ul>
+          <h1>User info...</h1>
+          <h2>Your name: {this.props.username}</h2>
+          <h3>Your email:{this.props.userEmail}</h3>
+          <h3>Your favorite searches:</h3>
+          <ul>{this.eachFavorite()}</ul>
         </div>
 
         <button onClick={this.editUserInfo}>Edit Your Info</button>
