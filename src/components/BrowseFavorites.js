@@ -106,17 +106,43 @@ class Favorites extends Component {
       .then(resp => resp.json())
       .then(favorites => {
         this.setState({ favorites: favorites });
-        this.groupFavorites();
+        // this.groupFavorites();
       });
   }
+
+  organizeFavorites = () => {
+    let newFavorites = [];
+    let newFavoritesArray = [];
+    this.state.favorites.map(favorite => {
+      if (!newFavorites.includes(favorite.candidate.id)) {
+        newFavorites.push(favorite.candidate.id);
+        newFavoritesArray.push({
+          candidate_id: favorite.candidate.id,
+          candidate_name: favorite.candidate.cand_name,
+          cid: favorite.candidate.cid,
+          users_favorited: [favorite.user_id]
+        });
+      } else {
+        newFavoritesArray.forEach(candidate => {
+          if (candidate.candidate_id === favorite.candidate.id) {
+            candidate.users_favorited.push(favorite.user_id);
+          }
+          console.log(candidate.candidate_id);
+        });
+      }
+    });
+    console.log(newFavorites);
+    console.log(newFavoritesArray);
+  };
   render() {
     return (
       <div>
         <h1>Favorites</h1>
         {/* {this.renderAllFavorites()} */}
-        {this.state.renderedFavorites.length !== 0
+        {/* {this.state.renderedFavorites.length !== 0
           ? this.renderGroupedFavorites()
-          : null}
+          : null} */}
+        {this.organizeFavorites()}
       </div>
     );
   }
