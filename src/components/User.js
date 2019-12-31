@@ -11,8 +11,6 @@ class UserInfo extends Component {
         userName: "",
         userEmail: "",
         favorites: []
-        // favorites: this.props.userFavorites
-        // favorites: []
       },
       showEditForm: false
     };
@@ -27,6 +25,7 @@ class UserInfo extends Component {
         favorites: this.props.userFavorites
       }
     });
+  }
 
   editUserInfo = () => {
     this.setState({
@@ -87,7 +86,6 @@ class UserInfo extends Component {
   };
 
   deleteFavorite = favorite => {
-    console.log(favorite);
     fetch("http://localhost:4000/favorites/" + favorite.id, {
       method: "DELETE",
       headers: {
@@ -115,9 +113,7 @@ class UserInfo extends Component {
       return (
         <li key={index}>
           {favorite.candidate.cand_name} (ID: {favorite.candidate.cid})
-          <button onClick={() => console.log("delete this", favorite)}>
-            x
-          </button>
+          <button onClick={() => this.deleteFavorite(favorite)}>x</button>
         </li>
       );
     });
