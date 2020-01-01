@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import NavBar from "../components/NavBar";
+import Menu from "../components/NavBar";
 import Home from "../components/Home";
 import Search from "../components/Search";
 import User from "../components/User";
@@ -71,7 +71,7 @@ class App extends React.Component {
         <Router>
           {this.state.loggedIn !== false ? (
             <div>
-              <NavBar loggedIn={this.state.loggedIn} />
+              <Menu loggedIn={this.state.loggedIn} />
               <Route
                 exact
                 path="/"
@@ -128,7 +128,7 @@ class App extends React.Component {
             </div>
           ) : (
             <div>
-              <NavBar loggedIn={this.state.loggedIn} />
+              <Menu loggedIn={this.state.loggedIn} />
               <Redirect to="/"></Redirect>
               <Route
                 exact
