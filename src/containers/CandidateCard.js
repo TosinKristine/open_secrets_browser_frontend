@@ -18,7 +18,10 @@ const CandidateCard = props => {
           </button>
         </Card>
 
-        <Contributors contributors={props.contributors} />
+        <Contributors
+          contributors={props.contributors}
+          candidate_id={props.id}
+        />
       </>
     );
   } else {
