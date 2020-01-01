@@ -1,18 +1,21 @@
 import React, { Component } from "react";
+import { Card } from "semantic-ui-react";
 
-class StateResults extends Component {
-  render() {
-    if (this.props.search_results.length === 0) {
-      return null;
-    } else {
+const StateResults = props => {
+  const renderResults = () => {
+    return props.search_results.map(person => {
       return (
-        <div>
-          <h2>Search results by state:</h2>
-          {this.props.search_results}
-        </div>
+        <Card>
+          <Card.Content>
+            <Card.Header>{person.legislator_name}</Card.Header>
+            <Card.Meta>{person.cid}</Card.Meta>
+          </Card.Content>
+        </Card>
       );
-    }
-  }
-}
+    });
+  };
+
+  return <>{renderResults()}</>;
+};
 
 export default StateResults;

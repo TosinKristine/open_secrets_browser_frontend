@@ -100,13 +100,16 @@ class Search extends Component {
       .then(resp => resp.json())
       .then(data => {
         let search_results = data.response.legislator.map(legislator => {
-          return (
-            <div>
-              <h4>Legislator name: {legislator["@attributes"].firstlast}</h4>
-              <h4>ID: {legislator["@attributes"].cid}</h4>
-              <br></br>
-            </div>
-          );
+          return {
+            legislator_name: legislator["@attributes"].firstlast,
+            cid: legislator["@attributes"].cid
+          };
+          // return (
+          //   <div>
+          //     <h4>Legislator name: {legislator["@attributes"].firstlast}</h4>
+          //     <h4>ID: {legislator["@attributes"].cid}</h4>
+          //   </div>
+          // );
         });
         this.setState({
           state_search_results: search_results

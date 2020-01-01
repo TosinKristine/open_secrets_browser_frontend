@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import Menu from "../components/NavBar";
+import Menu from "../components/Menu";
 import Home from "../components/Home";
 import Search from "../components/Search";
 import User from "../components/User";
