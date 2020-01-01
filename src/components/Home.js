@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LogIn from "./LogIn";
 import CreateNewUser from "./CreateNewUser";
+import Test from "./ContributionChart";
 
 class Home extends Component {
   constructor() {

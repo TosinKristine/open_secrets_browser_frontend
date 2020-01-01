@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card } from "semantic-ui-react";
+import ContributionChart from "./ContributionChart";
 
 const Contributors = props => {
   const saveContributors = contributor => {
@@ -16,16 +17,15 @@ const Contributors = props => {
         indivs: contributor.indivs,
         candidate_id: props.candidate_id
       })
-    })
-      .then(resp => resp.json())
-      .then(json => console.log(json));
+    }).then(resp => resp.json());
   };
   const renderResults = () => {
     return props.contributors.map(contributor => {
       return (
         <>
           {saveContributors(contributor)}
-          <Card>
+
+          {/* <Card>
             <Card.Content>
               <Card.Header>
                 Contributor name: {contributor.org_name}
@@ -38,12 +38,20 @@ const Contributors = props => {
                 Amount from individuals: ${contributor.indivs}{" "}
               </Card.Meta>
             </Card.Content>
-          </Card>
+          </Card> */}
         </>
       );
     });
   };
-  return <>{renderResults()}</>;
+  return (
+    <>
+      {renderResults()}
+      <ContributionChart
+        contributors={props.contributors}
+        candidate_name={props.candidate_name}
+      />
+    </>
+  );
 };
 
 export default Contributors;

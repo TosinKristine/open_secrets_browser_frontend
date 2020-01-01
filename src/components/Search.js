@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CandidateCard from "../containers/CandidateCard";
 import StateResults from "../containers/StateResults";
+import StatesDropdown from "./StatesDropdown";
 
 class Search extends Component {
   constructor() {
@@ -131,20 +132,25 @@ class Search extends Component {
       });
   };
 
+  handleSelectedState = e => {
+    this.setState({ search_by_state: e });
+  };
+
   render() {
     return (
       <div>
         <h1>Find candidate by state letters</h1>
         <form onSubmit={this.handleLettersSubmit}>
-          <label>
+          <StatesDropdown selectedState={this.handleSelectedState} />
+          {/* <label>
             Enter the state's two-character code:
             <input
               type="text"
               value={this.state.search_by_state}
               onChange={this.handleLettersChange}
-            ></input>
-            <input type="submit" value="Search"></input>
-          </label>
+            ></input> */}
+          <input type="submit" value="Search"></input>
+          {/* </label> */}
         </form>
 
         <StateResults search_results={this.state.state_search_results} />

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CandidateCard from "../containers/CandidateCard";
 
 class Favorites extends Component {
   constructor() {
@@ -11,25 +12,26 @@ class Favorites extends Component {
   }
 
   addToOwnFavorites = candidateId => {
-    fetch("http://localhost:4000/favorites", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user_id: this.props.userId,
-        candidate_id: candidateId
-      })
-    })
-      .then(resp => resp.json())
-      .then(json => {
-        console.log(json);
-        this.setState(
-          { userFavorites: this.state.userFavorites.concat(json) },
-          this.props.addUserFavorites(this.state.userFavorites)
-        );
-      });
+    console.log(candidateId);
+    // fetch("http://localhost:4000/favorites", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     user_id: this.props.userId,
+    //     candidate_id: candidateId
+    //   })
+    // })
+    //   .then(resp => resp.json())
+    //   .then(json => {
+    //     console.log(json);
+    //     this.setState(
+    //       { userFavorites: this.state.userFavorites.concat(json) },
+    //       this.props.addUserFavorites(this.state.userFavorites)
+    //     );
+    //   });
   };
 
   componentDidMount() {
@@ -71,9 +73,18 @@ class Favorites extends Component {
     return this.state.postedFavorites.map((favorite, index) => {
       return (
         <div key={index}>
-          <h2>Candidate: {favorite.candidate_name}</h2>
-          <h3>CID: {favorite.cid}</h3>
-          {!favorite.users_favorited.includes(this.props.userId) ? (
+          <CandidateCard
+            candidate_name={favorite.candidate_name}
+            candidate_id={favorite.cid}
+            candidate_cycle={""}
+            userFavoriteStatus={favorite.users_favorited.includes(
+              this.props.userId
+            )}
+            favorited={this.addToOwnFavorites}
+          ></CandidateCard>
+          {/* <h2>Candidate: {favorite.candidate_name}</h2>
+          <h3>CID: {favorite.cid}</h3> */}
+          {/* {!favorite.users_favorited.includes(this.props.userId) ? (
             <button
               onClick={() => {
                 this.addToOwnFavorites(favorite.candidate_id);
@@ -81,7 +92,7 @@ class Favorites extends Component {
             >
               Add to Your Favorites
             </button>
-          ) : null}
+          ) : null} */}
 
           <br></br>
         </div>

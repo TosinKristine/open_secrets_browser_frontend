@@ -13,15 +13,20 @@ const CandidateCard = props => {
             <Card.Meta>{props.candidate_cycle} </Card.Meta>
           </Card.Content>
           <br></br>
-          <button onClick={() => props.favorited(props.id)}>
-            Save this candidate to your favorites
-          </button>
+          {props.userFavoriteStatus ? null : (
+            <button onClick={() => props.favorited(props.id)}>
+              Save this candidate to your favorites
+            </button>
+          )}
         </Card>
 
-        <Contributors
-          contributors={props.contributors}
-          candidate_id={props.id}
-        />
+        {props.contributors ? (
+          <Contributors
+            contributors={props.contributors}
+            candidate_id={props.id}
+            candidate_name={props.candidate_name}
+          />
+        ) : null}
       </>
     );
   } else {
