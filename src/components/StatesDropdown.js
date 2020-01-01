@@ -262,7 +262,6 @@ const StatesDropdown = props => (
     options={stateOptions}
     onChange={e => {
       e.persist();
-      //   console.log(e.target.textContent);
       props.selectedState(e.target.textContent);
     }}
   />

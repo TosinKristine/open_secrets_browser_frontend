@@ -5,7 +5,7 @@ const StateResults = props => {
   const renderResults = () => {
     return props.search_results.map(person => {
       return (
-        <Card>
+        <Card onClick={() => props.selectedPerson(person)}>
           <Card.Content>
             <Card.Header>{person.legislator_name}</Card.Header>
             <Card.Meta>{person.cid}</Card.Meta>

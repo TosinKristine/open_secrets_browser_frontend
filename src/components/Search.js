@@ -110,7 +110,6 @@ class Search extends Component {
           state_search_results: search_results
         });
       });
-    //   .catch(alert("That's not a state! Try again"));
   };
 
   favorited = candidateId => {
@@ -136,24 +135,24 @@ class Search extends Component {
     this.setState({ search_by_state: e });
   };
 
+  handleSelectedPerson = e => {
+    console.log(e);
+    this.setState({ candidate_search: e.cid });
+  };
+
   render() {
     return (
       <div>
         <h1>Find candidate by state letters</h1>
         <form onSubmit={this.handleLettersSubmit}>
           <StatesDropdown selectedState={this.handleSelectedState} />
-          {/* <label>
-            Enter the state's two-character code:
-            <input
-              type="text"
-              value={this.state.search_by_state}
-              onChange={this.handleLettersChange}
-            ></input> */}
           <input type="submit" value="Search"></input>
-          {/* </label> */}
         </form>
 
-        <StateResults search_results={this.state.state_search_results} />
+        <StateResults
+          search_results={this.state.state_search_results}
+          selectedPerson={this.handleSelectedPerson}
+        />
 
         <h1>Find financial information about a candidate</h1>
         <form onSubmit={this.handleCandidateSubmit}>
