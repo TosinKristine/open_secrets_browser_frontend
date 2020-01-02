@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Modal extends Component {
+class EditUserInformation extends Component {
   constructor() {
     super();
     this.state = {
@@ -80,4 +80,4 @@ class Modal extends Component {
   }
 }
 
-export default Modal;
+export default EditUserInformation;

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "../App.css";
-import Modal from "./Modal";
+import EditUserInformation from "./EditUserInformation";
+import EditUserInfoModal from "./EditUserInfoModal";
+import DeleteUserModal from "./DeleteUserModal";
 
 class UserInfo extends Component {
   constructor() {
@@ -142,25 +144,45 @@ class UserInfo extends Component {
   render() {
     return (
       <div>
+        <h1>USER INFO</h1>
+        <div className="userEditDeleteButtons">
+          <div className="userEdit">
+            <EditUserInfoModal
+              userName={this.state.user.userName}
+              userEmail={this.state.user.userEmail}
+              userID={this.state.user.userID}
+              newUserName={this.newUserName}
+              newUserEmail={this.newUserEmail}
+            ></EditUserInfoModal>
+          </div>
+          {/* <button onClick={this.editUserInfo} className="userEdit">
+            Edit Your Name and Email
+          </button> */}
+          <div className="userDelete">
+            <DeleteUserModal
+              deleteConfirmation={this.deleteUser}
+            ></DeleteUserModal>
+          </div>
+          {/* <button onClick={this.deleteUser} className="userDelete">
+            Delete Your Account
+          </button> */}
+        </div>
         <div className="userInfo">
-          <h1>USER INFO</h1>
-          <h2>Your name: {this.state.user.userName}</h2>
+          <h3>Your name: {this.state.user.userName}</h3>
           <h3>Your email: {this.state.user.userEmail}</h3>
           <h3>Your favorite searches:</h3>
           <ul>{this.eachFavorite()}</ul>
         </div>
 
-        <button onClick={this.editUserInfo}>Edit Your Info</button>
-        <Modal
+        {/* <EditUserInformation
           show={this.state.showEditForm}
           closeModal={this.closeModal}
           userName={this.state.user.userName}
           userEmail={this.state.user.userEmail}
           userID={this.state.user.userID}
           newUserName={this.newUserName}
-          newUserEmail={this.newUserEmail}
-        />
-        <button onClick={this.deleteUser}>Delete Your Account</button>
+          newUserEmail={this.newUserEmail} */}
+        {/* /> */}
       </div>
     );
   }

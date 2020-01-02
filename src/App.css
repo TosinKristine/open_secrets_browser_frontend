@@ -88,3 +88,22 @@ h2 {
   margin: 0 auto;
   display: inline-block;
 }
+
+.userInfo {
+  padding: 20px;
+}
+
+.userEditDeleteButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: ". a b .";
+}
+
+.userEdit {
+  grid-area: a
+}
+
+.userDelete {
+  grid-area: b
+}
+
