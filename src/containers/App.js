@@ -6,6 +6,7 @@ import Search from "../components/Search";
 import User from "../components/User";
 import BrowseFavorites from "../components/BrowseFavorites";
 import "../App.css";
+require("dotenv").config();
 
 class App extends React.Component {
   constructor() {

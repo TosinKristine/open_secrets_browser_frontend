@@ -37,7 +37,9 @@ class Search extends Component {
     fetch(
       "https://www.opensecrets.org/api/?method=candContrib&cid=" +
         this.state.candidate_search +
-        "&apikey=a192665c31c48bfd2207ff83594a15d2&output=json"
+        "&apikey=" +
+        process.env.REACT_APP_API_KEY +
+        "&output=json"
     )
       .then(resp => resp.json())
       .then(data => {
@@ -102,7 +104,9 @@ class Search extends Component {
     fetch(
       "http://www.opensecrets.org/api/?method=getLegislators&id=" +
         this.state.search_by_state +
-        "&apikey=a192665c31c48bfd2207ff83594a15d2&output=json"
+        "&apikey=" +
+        process.env.REACT_APP_API_KEY +
+        "&output=json"
     )
       .then(resp => resp.json())
       .then(data => {
