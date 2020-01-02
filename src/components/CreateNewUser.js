@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import NewUserModal from "./NewUserModal";
 
 class CreateNewUser extends Component {
   constructor() {
@@ -75,6 +76,13 @@ class CreateNewUser extends Component {
       <div>
         <h2 onClick={this.checkForNewUser}>Create new user here...</h2>
         {this.renderNewUserForm()}
+        <NewUserModal
+          newUsername={this.state.newUserName}
+          usernameChange={e => this.handleCreateUserName(e)}
+          newUserEmail={this.state.newUserEmail}
+          emailChange={e => this.handleCreateUserEmail(e)}
+          submitLogin={e => this.handleSubmitCreateUser(e)}
+        ></NewUserModal>
       </div>
     );
   }

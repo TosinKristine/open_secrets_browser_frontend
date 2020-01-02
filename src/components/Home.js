@@ -9,6 +9,7 @@ class Home extends Component {
     this.state = {
       loggedIn: false,
       loggedInEmail: "",
+      loggedInUsername: "",
       newUserName: "",
       newUserEmail: ""
     };
@@ -36,7 +37,8 @@ class Home extends Component {
     this.props.username(e);
   };
   handleNewUserName = e => {
-    this.setState({ newUserName: e });
+    this.setState({ newUserName: e, loggedInUsername: e });
+    this.props.username(e);
   };
   handleNewUserEmail = e => {
     this.setState({ newUserEmail: e, loggedIn: true, loggedInEmail: e });
