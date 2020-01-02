@@ -145,9 +145,15 @@ class Favorites extends Component {
     return (
       <div>
         <h1>BROWSE FAVORITES</h1>
-        {this.state.postedFavorites.length !== 0
-          ? this.postedFavorites()
-          : null}
+        <h4>
+          These are the searches that have been 'favorited' by all users of Open
+          Secrets Browser.
+        </h4>
+        <div className="favoritedCards">
+          {this.state.postedFavorites.length !== 0
+            ? this.postedFavorites()
+            : null}
+        </div>
       </div>
     );
   }

@@ -180,6 +180,7 @@ class Search extends Component {
         </div>
         {this.state.isLoadingState ? <LoaderExampleLoader /> : null}
 
+        <hr></hr>
         <h2>Find financial information about a candidate</h2>
         <form onSubmit={this.handleCandidateSubmit}>
           <div className="candidateSearchForm">

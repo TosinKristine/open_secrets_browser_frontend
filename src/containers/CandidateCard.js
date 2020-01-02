@@ -6,25 +6,28 @@ const CandidateCard = props => {
   if (props.candidate_name !== "") {
     return (
       <>
-        <Card>
-          <Card.Content>
-            <Card.Header>{props.candidate_name}</Card.Header>
-            <Card.Meta>{props.candidate_id} </Card.Meta>
-            <Card.Meta>{props.candidate_cycle} </Card.Meta>
-          </Card.Content>
-          <br></br>
-          {/* {props.seeContributors ? (
+        <div className="candidateCard">
+          <Card>
+            <Card.Content>
+              <Card.Header>{props.candidate_name}</Card.Header>
+              <Card.Meta>{props.candidate_id} </Card.Meta>
+              <Card.Meta>{props.candidate_cycle} </Card.Meta>
+            </Card.Content>
+            <br></br>
+            {/* {props.seeContributors ? (
             <button onClick={() => props.seeContributors(true)}>
               Click to see Contributors
             </button>
           ) : null} */}
-          {props.userFavoriteStatus ? null : (
-            <button onClick={() => props.favorited(props.id)}>
-              Save this candidate to your favorites
-            </button>
-          )}
-        </Card>
-
+            {props.userFavoriteStatus ? null : (
+              <button
+                onClick={() => props.favorited(props.id)}
+              >
+                Save this candidate to your favorites
+              </button>
+            )}
+          </Card>
+        </div>
         {props.contributors ? (
           <Contributors
             contributors={props.contributors}
