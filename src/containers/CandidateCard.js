@@ -13,6 +13,11 @@ const CandidateCard = props => {
             <Card.Meta>{props.candidate_cycle} </Card.Meta>
           </Card.Content>
           <br></br>
+          {/* {props.seeContributors ? (
+            <button onClick={() => props.seeContributors(true)}>
+              Click to see Contributors
+            </button>
+          ) : null} */}
           {props.userFavoriteStatus ? null : (
             <button onClick={() => props.favorited(props.id)}>
               Save this candidate to your favorites

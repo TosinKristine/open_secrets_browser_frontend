@@ -40,6 +40,7 @@ class App extends React.Component {
   };
 
   handleUsername = e => {
+    console.log(e);
     this.setState({
       loggedInUsername: e
     });
@@ -110,6 +111,8 @@ class App extends React.Component {
                     userFavorites={this.state.loggedInFavorites}
                     username={this.state.loggedInUsername}
                     userID={this.state.loggedInId}
+                    newUsername={this.handleUsername}
+                    newUserEmail={this.handleLoggedInEmail}
                   ></User>
                 )}
               ></Route>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CandidateCard from "../containers/CandidateCard";
+import ContributionChart from "./ContributionChart";
 
 class Favorites extends Component {
   constructor() {
@@ -69,6 +70,30 @@ class Favorites extends Component {
     this.setState({ postedFavorites: organizedFavorites });
   };
 
+  fetchCandidateContributors = favorite => {
+    fetch("http://localhost:4000/candidates")
+      .then(resp => resp.json())
+      .then(json => {
+        // console.log(favorite.candidate_name);
+        let result = json.filter(person => {
+          return person.cand_name === favorite.candidate_name;
+        });
+        // console.log(result[0].contributors);
+        console.log(result[0].contributors);
+        // return result[0].contributors;
+        return (
+          <ContributionChart
+            candidate_name={favorite.candidate_name}
+            contributors={result[0].contributors}
+          ></ContributionChart>
+        );
+      });
+  };
+
+  renderCandidateContributors = () => {
+    return true;
+  };
+
   postedFavorites = () => {
     return this.state.postedFavorites.map((favorite, index) => {
       return (
@@ -81,7 +106,24 @@ class Favorites extends Component {
               this.props.userId
             )}
             favorited={this.addToOwnFavorites}
+            // seeContributors={this.renderCandidateContributors}
           ></CandidateCard>
+          {/* {this.renderCandidateContributors
+            ? console.log("it should be rendered")
+            : console.log("no no no")} */}
+
+          {/* // ? this.fetchCandidateContributors(favorite) // : null} */}
+          {/* <ContributionChart
+            candidate_name={favorite.candidate_name}
+            contributors={this.fetchCandidateContributors(favorite)}
+          ></ContributionChart> */}
+          {/* {this.fetchCandidateContributors(favorite)} */}
+          {/* {this.fetchCandidateContributors(favorite).length !== 0 ? (
+            <ContributionChart
+              candidate_name={favorite.candidate_name}
+              contributors={this.fetchCandidateContributors(favorite)}
+            ></ContributionChart>
+          ) : null} */}
           {/* <h2>Candidate: {favorite.candidate_name}</h2>
           <h3>CID: {favorite.cid}</h3> */}
           {/* {!favorite.users_favorited.includes(this.props.userId) ? (
@@ -93,7 +135,6 @@ class Favorites extends Component {
               Add to Your Favorites
             </button>
           ) : null} */}
-
           <br></br>
         </div>
       );

@@ -68,21 +68,27 @@ class UserInfo extends Component {
   };
 
   newUserName = name => {
-    this.setState({
-      user: {
-        ...this.state.user,
-        userName: name
-      }
-    });
+    this.setState(
+      {
+        user: {
+          ...this.state.user,
+          userName: name
+        }
+      },
+      this.props.newUsername(name)
+    );
   };
 
   newUserEmail = email => {
-    this.setState({
-      user: {
-        ...this.state.user,
-        userEmail: email
-      }
-    });
+    this.setState(
+      {
+        user: {
+          ...this.state.user,
+          userEmail: email
+        }
+      },
+      this.props.newUserEmail(email)
+    );
   };
 
   deleteFavorite = favorite => {
