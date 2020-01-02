@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CandidateCard from "../containers/CandidateCard";
 import ContributionChart from "./ContributionChart";
+import ContributionChartModal from "./ContributionChartModal";
 
 class Favorites extends Component {
   constructor() {
@@ -30,10 +31,9 @@ class Favorites extends Component {
       .then(json => {
         console.log(json);
         this.setState({
-           userFavorites: this.state.userFavorites.concat(json) }
-          
-        );
-        this.props.addUserFavorites(this.state.userFavorites)
+          userFavorites: this.state.userFavorites.concat(json)
+        });
+        this.props.addUserFavorites(this.state.userFavorites);
       });
   };
 
@@ -100,6 +100,7 @@ class Favorites extends Component {
     return this.state.postedFavorites.map((favorite, index) => {
       return (
         <div key={index}>
+          {/* <ContributionChartModal></ContributionChartModal> */}
           <CandidateCard
             candidate_name={favorite.candidate_name}
             cid={favorite.cid}
@@ -109,6 +110,7 @@ class Favorites extends Component {
               this.props.userId
             )}
             favorited={this.addToOwnFavorites}
+            contributionChart={true}
             // seeContributors={this.renderCandidateContributors}
           ></CandidateCard>
           {/* {this.renderCandidateContributors

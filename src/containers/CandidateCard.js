@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "semantic-ui-react";
 import Contributors from "../components/Contributors";
 import SaveToFavoritesButton from "../components/SaveToFavoritesButton";
+import ContributionChartModal from "../components/ContributionChartModal";
 
 const CandidateCard = props => {
   if (props.candidate_name !== "") {
@@ -32,6 +33,12 @@ const CandidateCard = props => {
                   Save this candidate to your favorites
                 </button>
               )}
+              {props.contributionChart ? (
+                <ContributionChartModal
+                  cid={props.cid}
+                  candidate_name={props.candidate_name}
+                ></ContributionChartModal>
+              ) : null}
             </Card>
           </div>
         )}

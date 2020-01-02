@@ -5,7 +5,7 @@ const ContributorsList = props => {
   const eachContributor = () => {
     return props.contributors.map((contributor, index) => {
       return (
-        <List.Item>
+        <List.Item key={index}>
           <List.Content>
             <List.Header>{contributor.org_name}</List.Header>
             Total donated: ${contributor.total}

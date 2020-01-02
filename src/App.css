@@ -87,6 +87,7 @@ h2 {
 .candidateCard {
   margin: 0 auto;
   display: inline-block;
+  margin-bottom: 10px;
 }
 
 .userInfo {
