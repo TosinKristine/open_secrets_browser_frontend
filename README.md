@@ -8,8 +8,8 @@ The frontend of this project was created using React, and styling was done using
 
 ## Installing
 
-- Fork and clone the frontend repository:
-- Fork and clone the backend repository:
+- Fork and clone the frontend repository: https://github.com/alisabaj/open_secrets_browser_frontend
+- Fork and clone the backend repository: https://github.com/alisabaj/open_secrets_browser_backend
 - Add the following gems to the Gemfile in the backend:
   - 'rack-cors'
   - 'active_model_serializers', '~> 0.10.0'
