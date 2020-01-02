@@ -210,6 +210,7 @@ class Search extends Component {
           candidate_cycle={this.state.candidate.candidate_cycle}
           contributors={this.state.contributors}
           favorited={this.favorited}
+          searchPage={true}
           // id={this.state.candidate.id}
         />
       </div>

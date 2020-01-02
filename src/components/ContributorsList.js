@@ -23,26 +23,7 @@ const ContributorsList = props => {
   return (
     <div className="contributorsList">
       <h3>More information on the contributions</h3>
-      <List celled>
-        {eachContributor()}
-        {/* <List.Item>
-        <List.Content>
-          <List.Header>Snickerdoodle</List.Header>
-          An excellent companion
-        </List.Content>
-      </List.Item>
-      <List.Item>
-        <List.Content>
-          <List.Header>Poodle</List.Header>A poodle, it's pretty basic
-        </List.Content>
-      </List.Item>
-      <List.Item>
-        <List.Content>
-          <List.Header>Paulo</List.Header>
-          He's also a dog
-        </List.Content>
-      </List.Item> */}
-      </List>
+      <List celled>{eachContributor()}</List>
     </div>
   );
 };

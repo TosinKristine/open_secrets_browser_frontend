@@ -115,3 +115,8 @@ h2 {
 .contributorsList h3 {
   text-align: center;
 }
+
+.saveToFavButton {
+  text-align: center;
+  height: 18px;
+}

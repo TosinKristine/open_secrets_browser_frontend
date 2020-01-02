@@ -1,5 +1,4 @@
 import React from "react";
-// import { Card } from "semantic-ui-react";
 import ContributionChart from "./ContributionChart";
 import ContributorsList from "./ContributorsList";
 
@@ -22,26 +21,7 @@ const Contributors = props => {
   };
   const renderResults = () => {
     return props.contributors.map((contributor, index) => {
-      return (
-        <div key={index}>
-          {saveContributors(contributor)}
-
-          {/* <Card>
-            <Card.Content>
-              <Card.Header>
-                Contributor name: {contributor.org_name}
-              </Card.Header>
-              <Card.Description>
-                Total donated: ${contributor.total}{" "}
-              </Card.Description>
-              <Card.Meta>Amount from PACS: ${contributor.pacs} </Card.Meta>
-              <Card.Meta>
-                Amount from individuals: ${contributor.indivs}{" "}
-              </Card.Meta>
-            </Card.Content>
-          </Card> */}
-        </div>
-      );
+      return <div key={index}>{saveContributors(contributor)}</div>;
     });
   };
   return (

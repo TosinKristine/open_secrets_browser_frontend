@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 import Contributors from "../components/Contributors";
+import SaveToFavoritesButton from "../components/SaveToFavoritesButton";
 
 const CandidateCard = props => {
   if (props.candidate_name !== "") {
@@ -13,26 +14,27 @@ const CandidateCard = props => {
             candidate_name={props.candidate_name}
           />
         ) : null}
-        <div className="candidateCard">
-          <Card>
-            <Card.Content>
-              <Card.Header>{props.candidate_name}</Card.Header>
-              <Card.Meta>{props.cid} </Card.Meta>
-              <Card.Meta>{props.candidate_cycle} </Card.Meta>
-            </Card.Content>
-            <br></br>
-            {/* {props.seeContributors ? (
-            <button onClick={() => props.seeContributors(true)}>
-              Click to see Contributors
-            </button>
-          ) : null} */}
-            {props.userFavoriteStatus ? null : (
-              <button onClick={() => props.favorited(props.candidate_id)}>
-                Save this candidate to your favorites
-              </button>
-            )}
-          </Card>
-        </div>
+        {props.searchPage ? (
+          <SaveToFavoritesButton
+            saveFavorite={() => props.favorited(props.candidate_id)}
+          ></SaveToFavoritesButton>
+        ) : (
+          <div className="candidateCard">
+            <Card>
+              <Card.Content>
+                <Card.Header>{props.candidate_name}</Card.Header>
+                <Card.Meta>{props.cid} </Card.Meta>
+                <Card.Meta>{props.candidate_cycle} </Card.Meta>
+              </Card.Content>
+              <br></br>
+              {props.userFavoriteStatus ? null : (
+                <button onClick={() => props.favorited(props.candidate_id)}>
+                  Save this candidate to your favorites
+                </button>
+              )}
+            </Card>
+          </div>
+        )}
       </>
     );
   } else {
