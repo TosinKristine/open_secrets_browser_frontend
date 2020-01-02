@@ -42,36 +42,9 @@ class LogIn extends Component {
       });
   };
 
-  // checkLoggedIn = () => {
-  //   if (this.state.loggedInForm) {
-  //     return (
-  //       <form onSubmit={this.handleSubmitLogIn}>
-  //         <h2>Log in to an existing account:</h2>
-  //         <label>
-  //           Your email:
-  //           <input
-  //             type="text"
-  //             name="email"
-  //             value={this.state.loggedInEmail}
-  //             onChange={this.handleLoginEmailChange}
-  //           ></input>
-  //         </label>
-  //         <input type="submit" value="Log In"></input>
-  //       </form>
-  //     );
-  //   } else {
-  //     return (
-  //       <div>
-  //         <h2 onClick={this.renderLogIn}>Log In Over Here....</h2>
-  //       </div>
-  //     );
-  //   }
-  // };
-
   render() {
     return (
       <div>
-        {/* {this.checkLoggedIn()} */}
         <LoginModal
           loggedInEmail={this.state.loggedInEmail}
           loginEmailChange={e => this.handleLoginEmailChange(e)}

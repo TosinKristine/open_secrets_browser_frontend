@@ -50,16 +50,20 @@ class App extends React.Component {
 
   handleAddFavorite = e => {
     console.log(e);
-    this.setState({
-      loggedInFavorites: this.state.loggedInFavorites.concat(e)
-    });
+    if (!this.state.loggedInFavorites.includes(e)) {
+      this.setState({
+        loggedInFavorites: this.state.loggedInFavorites.concat(e)
+      });
+    }
   };
 
   handleNewUserFavorite = e => {
     console.log(e);
-    this.setState({
-      loggedInFavorites: this.state.loggedInFavorites.concat(e)
-    });
+    if (!this.state.loggedInFavorites.includes(e)) {
+      this.setState({
+        loggedInFavorites: this.state.loggedInFavorites.concat(e)
+      });
+    }
   };
 
   handleDeletedFavorite = favorite => {

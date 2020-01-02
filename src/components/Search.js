@@ -188,8 +188,6 @@ class Search extends Component {
         <h2>Find financial information about a candidate</h2>
         <form onSubmit={this.handleCandidateSubmit}>
           <div className="candidateSearchForm">
-            {/* <label className="candidateID">
-              Candidate ID: */}
             <input
               type="text"
               value={this.state.candidate_search}
@@ -197,7 +195,6 @@ class Search extends Component {
               placeholder="Candidate ID"
               className="searchButtons"
             ></input>
-            {/* </label> */}
             <input
               type="submit"
               value="Find Contribution Information"
@@ -215,7 +212,6 @@ class Search extends Component {
           contributors={this.state.contributors}
           favorited={this.favorited}
           searchPage={true}
-          // id={this.state.candidate.id}
         />
       </div>
     );
