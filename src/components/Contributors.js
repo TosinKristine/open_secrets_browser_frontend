@@ -20,9 +20,9 @@ const Contributors = props => {
     }).then(resp => resp.json());
   };
   const renderResults = () => {
-    return props.contributors.map(contributor => {
+    return props.contributors.map((contributor, index) => {
       return (
-        <>
+        <div key={index}>
           {saveContributors(contributor)}
 
           {/* <Card>
@@ -39,7 +39,7 @@ const Contributors = props => {
               </Card.Meta>
             </Card.Content>
           </Card> */}
-        </>
+        </div>
       );
     });
   };

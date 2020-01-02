@@ -206,11 +206,11 @@ class Search extends Component {
 
         <CandidateCard
           candidate_name={this.state.candidate.candidate_name}
-          candidate_id={this.state.candidate.candidate_id}
+          candidate_id={this.state.candidate.id}
           candidate_cycle={this.state.candidate.candidate_cycle}
           contributors={this.state.contributors}
           favorited={this.favorited}
-          id={this.state.candidate.id}
+          // id={this.state.candidate.id}
         />
       </div>
     );
