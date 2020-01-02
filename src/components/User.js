@@ -104,18 +104,6 @@ class UserInfo extends Component {
       .then(resp => resp.json())
       .then(json => {
         console.log(json);
-        console.log(favorite);
-        // this.setState(
-        //   {
-        //     user: {
-        //       ...this.state.user,
-        //       favorites: this.state.user.favorites.filter(each_favorite => {
-        //         return each_favorite !== favorite;
-        //       })
-        //     }
-        //   },
-        //   console.log(this.state.user)
-        // );
       });
   };
 

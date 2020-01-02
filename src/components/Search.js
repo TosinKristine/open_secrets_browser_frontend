@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CandidateCard from "../containers/CandidateCard";
 import StateResults from "../containers/StateResults";
 import StatesDropdown from "./StatesDropdown";
+import LoaderExampleLoader from "./Loader";
 
 class Search extends Component {
   constructor() {
@@ -16,7 +17,9 @@ class Search extends Component {
         candidate_cycle: "",
         id: ""
       },
-      contributors: []
+      contributors: [],
+      isLoadingState: false,
+      isLoadingCandidate: false
     };
   }
 
@@ -30,6 +33,7 @@ class Search extends Component {
 
   handleCandidateSubmit = e => {
     e.preventDefault();
+    this.setState({ isLoadingCandidate: true });
     fetch(
       "https://www.opensecrets.org/api/?method=candContrib&cid=" +
         this.state.candidate_search +
@@ -42,6 +46,7 @@ class Search extends Component {
         let candidate_id = data.response.contributors["@attributes"].cid;
         let candidate_cycle = data.response.contributors["@attributes"].cycle;
         this.setState({
+          isLoadingCandidate: false,
           candidate: {
             candidate_name: candidate_name,
             candidate_id: candidate_id,
@@ -93,6 +98,7 @@ class Search extends Component {
 
   handleLettersSubmit = e => {
     e.preventDefault();
+    this.setState({ isLoadingState: true });
     fetch(
       "http://www.opensecrets.org/api/?method=getLegislators&id=" +
         this.state.search_by_state +
@@ -107,6 +113,7 @@ class Search extends Component {
           };
         });
         this.setState({
+          isLoadingState: false,
           state_search_results: search_results
         });
       });
@@ -154,6 +161,8 @@ class Search extends Component {
           selectedPerson={this.handleSelectedPerson}
         />
 
+        {this.state.isLoadingState ? <LoaderExampleLoader /> : null}
+
         <h1>Find financial information about a candidate</h1>
         <form onSubmit={this.handleCandidateSubmit}>
           <label>
@@ -166,6 +175,8 @@ class Search extends Component {
             <input type="submit" value="Search"></input>
           </label>
         </form>
+
+        {this.state.isLoadingCandidate ? <LoaderExampleLoader /> : null}
 
         <CandidateCard
           candidate_name={this.state.candidate.candidate_name}

@@ -69,12 +69,6 @@ class App extends React.Component {
     });
   };
 
-  // handleFavorites = e => {
-  //   this.setState({
-  //     loggedInFavorites: e
-  //   });
-  // };
-
   render() {
     return (
       <div>
