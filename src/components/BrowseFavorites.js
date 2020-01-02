@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CandidateCard from "../containers/CandidateCard";
 import ContributionChart from "./ContributionChart";
-import ContributionChartModal from "./ContributionChartModal";
 
 class Favorites extends Component {
   constructor() {
@@ -14,8 +13,6 @@ class Favorites extends Component {
   }
 
   addToOwnFavorites = candidateId => {
-    console.log(candidateId);
-    console.log(this.props.userId);
     fetch("http://localhost:4000/favorites", {
       method: "POST",
       headers: {
@@ -29,7 +26,6 @@ class Favorites extends Component {
     })
       .then(resp => resp.json())
       .then(json => {
-        console.log(json);
         this.setState({
           userFavorites: this.state.userFavorites.concat(json)
         });
@@ -76,13 +72,9 @@ class Favorites extends Component {
     fetch("http://localhost:4000/candidates")
       .then(resp => resp.json())
       .then(json => {
-        // console.log(favorite.candidate_name);
         let result = json.filter(person => {
           return person.cand_name === favorite.candidate_name;
         });
-        // console.log(result[0].contributors);
-        console.log(result[0].contributors);
-        // return result[0].contributors;
         return (
           <ContributionChart
             candidate_name={favorite.candidate_name}
@@ -100,7 +92,6 @@ class Favorites extends Component {
     return this.state.postedFavorites.map((favorite, index) => {
       return (
         <div key={index}>
-          {/* <ContributionChartModal></ContributionChartModal> */}
           <CandidateCard
             candidate_name={favorite.candidate_name}
             cid={favorite.cid}
@@ -111,35 +102,7 @@ class Favorites extends Component {
             )}
             favorited={this.addToOwnFavorites}
             contributionChart={true}
-            // seeContributors={this.renderCandidateContributors}
           ></CandidateCard>
-          {/* {this.renderCandidateContributors
-            ? console.log("it should be rendered")
-            : console.log("no no no")} */}
-
-          {/* // ? this.fetchCandidateContributors(favorite) // : null} */}
-          {/* <ContributionChart
-            candidate_name={favorite.candidate_name}
-            contributors={this.fetchCandidateContributors(favorite)}
-          ></ContributionChart> */}
-          {/* {this.fetchCandidateContributors(favorite)} */}
-          {/* {this.fetchCandidateContributors(favorite).length !== 0 ? (
-            <ContributionChart
-              candidate_name={favorite.candidate_name}
-              contributors={this.fetchCandidateContributors(favorite)}
-            ></ContributionChart>
-          ) : null} */}
-          {/* <h2>Candidate: {favorite.candidate_name}</h2>
-          <h3>CID: {favorite.cid}</h3> */}
-          {/* {!favorite.users_favorited.includes(this.props.userId) ? (
-            <button
-              onClick={() => {
-                this.addToOwnFavorites(favorite.candidate_id);
-              }}
-            >
-              Add to Your Favorites
-            </button>
-          ) : null} */}
           <br></br>
         </div>
       );

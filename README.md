@@ -1,69 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Open Secrets Browser
 
-## Available Scripts
+Welcome to the Open Secrets Browser, a program which uses the Open Secrets API to display information about federal legislators' top financial contributors. As a user, you can: - log in or create a new account - search for legislators by state - search for the financial information of a specific legislator - view that information as a chart using ChartJS - save that legislator to your 'favorites' - browse other users' 'favorites' - edit your user information, including your 'favorites' - delete your account
 
-In the project directory, you can run:
+## Getting Started
 
-### `yarn start`
+The frontend of this project was created using React, and styling was done using Semantic UI as well as CSS. The backend was built using Ruby on Rails (2.6.1). This project requires the use of an API key from Open Secrets, which can be acquired [here](https://www.opensecrets.org/open-data/api-documentation). In this project, API calls are made from the front-end and are persisted on the backend.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installing
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Fork and clone the frontend repository:
+- Fork and clone the backend repository:
+- Add the following gems to the Gemfile in the backend:
+  - 'rack-cors'
+  - 'active_model_serializers', '~> 0.10.0'
+- Run `bundle install` in the backend repo
+- Run `rails s -p 4000` from the terminal in the backend
+- In the frontend, run:
+  - `npm install react-dom`
+  - `npm install react-router-dom`
+  - `npm install semantic-ui-react`
+- Run `npm start` from the terminal in the frontend
 
-### `yarn test`
+## Contributors Guide
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This program is a work in progress. I welcome all suggestions and contributions to this project. Please feel free to submit a pull request.
 
-### `yarn build`
+## Licensing
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# open_secrets_browser_frontend
+[MIT](https://choosealicense.com/licenses/mit/)
