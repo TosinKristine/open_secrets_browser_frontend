@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "../App.css";
 import { Menu } from "semantic-ui-react";
 
@@ -14,79 +14,43 @@ export default class MenuExampleBasic extends Component {
     return (
       <Menu>
         <Menu.Item
-          name="home"
+          as={Link}
           active={activeItem === "home"}
           onClick={this.handleItemClick}
+          name="home"
+          to="/"
         >
-          <NavLink to="/" exact>
-            Home
-          </NavLink>
+          Home
         </Menu.Item>
-
         <Menu.Item
-          name="search"
+          as={Link}
           active={activeItem === "search"}
           onClick={this.handleItemClick}
+          name="search"
+          to="/search"
         >
-          <NavLink to="/search" exact>
-            Search
-          </NavLink>
+          Search
         </Menu.Item>
-
         <Menu.Item
-          name="browsefavorites"
+          as={Link}
           active={activeItem === "browsefavorites"}
           onClick={this.handleItemClick}
+          name="browsefavorites"
+          to="/browsefavorites"
         >
-          <NavLink to="/browsefavorites" exact>
-            Browse Favorites
-          </NavLink>
+          Browse Favorites
         </Menu.Item>
-
         <Menu.Item
-          name="user"
+          as={Link}
           active={activeItem === "user"}
           onClick={this.handleItemClick}
+          name="user"
+          to="/user"
         >
-          <NavLink to="/user" exact>
-            User
-          </NavLink>
+          User Info
         </Menu.Item>
       </Menu>
     );
   }
 }
 
-// class NavBar extends Component {
-//   checkLoggedIn = () => {
-//     if (this.props.loggedIn) {
-//       return (
-//         <div className="navbar">
-//           <NavLink to="/" exact>
-//             [ Home ]
-//           </NavLink>
-//           <NavLink to="/search" exact>
-//             [ Search ]
-//           </NavLink>
-//           <NavLink to="/user" exact>
-//             [ User ]
-//           </NavLink>
-//           <NavLink to="/browsefavorites" exact>
-//             [ Browse Favorites ]
-//           </NavLink>
-//         </div>
-//       );
-//     } else {
-//       return (
-//         <NavLink to="/" exact>
-//           [ Home ]
-//         </NavLink>
-//       );
-//     }
-//   };
-//   render() {
-//     return <div className="navbar">{this.checkLoggedIn()} </div>;
-//   }
-// }
-
-// export default NavBar;

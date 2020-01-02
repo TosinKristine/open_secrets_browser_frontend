@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Header, Modal } from "semantic-ui-react";
+import { Button, Modal } from "semantic-ui-react";
 
 const NewUserModal = props => (
   <Modal trigger={<Button>New User</Button>}>

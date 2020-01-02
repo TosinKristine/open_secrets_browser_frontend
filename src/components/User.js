@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../App.css";
-import EditUserInformation from "./EditUserInformation";
 import EditUserInfoModal from "./EditUserInfoModal";
 import DeleteUserModal from "./DeleteUserModal";
 
@@ -155,17 +154,12 @@ class UserInfo extends Component {
               newUserEmail={this.newUserEmail}
             ></EditUserInfoModal>
           </div>
-          {/* <button onClick={this.editUserInfo} className="userEdit">
-            Edit Your Name and Email
-          </button> */}
+
           <div className="userDelete">
             <DeleteUserModal
               deleteConfirmation={this.deleteUser}
             ></DeleteUserModal>
           </div>
-          {/* <button onClick={this.deleteUser} className="userDelete">
-            Delete Your Account
-          </button> */}
         </div>
         <div className="userInfo">
           <h3>Your name: {this.state.user.userName}</h3>
@@ -173,16 +167,6 @@ class UserInfo extends Component {
           <h3>Your favorite searches:</h3>
           <ul>{this.eachFavorite()}</ul>
         </div>
-
-        {/* <EditUserInformation
-          show={this.state.showEditForm}
-          closeModal={this.closeModal}
-          userName={this.state.user.userName}
-          userEmail={this.state.user.userEmail}
-          userID={this.state.user.userID}
-          newUserName={this.newUserName}
-          newUserEmail={this.newUserEmail} */}
-        {/* /> */}
       </div>
     );
   }

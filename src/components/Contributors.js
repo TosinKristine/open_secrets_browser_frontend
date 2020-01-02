@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Card } from "semantic-ui-react";
+import React from "react";
+// import { Card } from "semantic-ui-react";
 import ContributionChart from "./ContributionChart";
 
 const Contributors = props => {
