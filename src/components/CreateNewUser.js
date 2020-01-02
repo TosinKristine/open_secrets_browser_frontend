@@ -43,39 +43,39 @@ class CreateNewUser extends Component {
       });
   };
 
-  renderNewUserForm = e => {
-    if (this.state.newUserForm) {
-      return (
-        <form onSubmit={this.handleSubmitCreateUser}>
-          <label>
-            Your name:
-            <input
-              type="text"
-              name="name"
-              value={this.state.newUserName}
-              onChange={this.handleCreateUserName}
-            ></input>
-          </label>
-          <label>
-            Your email:
-            <input
-              type="text"
-              name="email"
-              value={this.state.newUserEmail}
-              onChange={this.handleCreateUserEmail}
-            ></input>
-          </label>
-          <input type="submit" value="Create Account"></input>
-        </form>
-      );
-    }
-  };
+  // renderNewUserForm = e => {
+  //   if (this.state.newUserForm) {
+  //     return (
+  //       <form onSubmit={this.handleSubmitCreateUser}>
+  //         <label>
+  //           Your name:
+  //           <input
+  //             type="text"
+  //             name="name"
+  //             value={this.state.newUserName}
+  //             onChange={this.handleCreateUserName}
+  //           ></input>
+  //         </label>
+  //         <label>
+  //           Your email:
+  //           <input
+  //             type="text"
+  //             name="email"
+  //             value={this.state.newUserEmail}
+  //             onChange={this.handleCreateUserEmail}
+  //           ></input>
+  //         </label>
+  //         <input type="submit" value="Create Account"></input>
+  //       </form>
+  //     );
+  //   }
+  // };
 
   render() {
     return (
       <div>
-        <h2 onClick={this.checkForNewUser}>Create new user here...</h2>
-        {this.renderNewUserForm()}
+        {/* <h2 onClick={this.checkForNewUser}>Create new user here...</h2>
+        {this.renderNewUserForm()} */}
         <NewUserModal
           newUsername={this.state.newUserName}
           usernameChange={e => this.handleCreateUserName(e)}

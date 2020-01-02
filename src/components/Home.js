@@ -61,6 +61,7 @@ class Home extends Component {
               onHandleHome={this.handleHome}
               loggedInUsername={this.handleUsername}
             ></LogIn>
+            <br></br>
             <CreateNewUser
               newUserName={this.handleNewUserName}
               newUserEmail={this.handleNewUserEmail}

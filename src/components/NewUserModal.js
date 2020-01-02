@@ -25,16 +25,6 @@ const NewUserModal = props => (
               onChange={e => props.emailChange(e)}
             ></input>
           </label>
-
-          {/* <label>
-            Your email:
-            <input
-              type="text"
-              name="email"
-              value={props.loggedInEmail}
-              onChange={e => props.loginEmailChange(e)}
-            ></input>
-          </label> */}
           <input type="submit" value="Create Account"></input>
         </form>
       </Modal.Description>

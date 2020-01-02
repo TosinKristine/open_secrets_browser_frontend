@@ -75,7 +75,7 @@ class App extends React.Component {
         <Router>
           {this.state.loggedIn !== false ? (
             <div>
-              <Menu loggedIn={this.state.loggedIn} />
+              <Menu />
               <Route
                 exact
                 path="/"
@@ -136,7 +136,6 @@ class App extends React.Component {
             </div>
           ) : (
             <div>
-              <Menu loggedIn={this.state.loggedIn} />
               <Redirect to="/"></Redirect>
               <Route
                 exact
