@@ -17,6 +17,7 @@ class App extends React.Component {
       loggedInId: "",
       loggedInFavorites: [],
       loggedInUsername: ""
+      // persistedFavorites: []
     };
   }
 
@@ -55,6 +56,7 @@ class App extends React.Component {
         loggedInFavorites: this.state.loggedInFavorites.concat(e)
       });
     }
+    // this.handlePersistFavorites();
   };
 
   handleNewUserFavorite = e => {
@@ -64,7 +66,20 @@ class App extends React.Component {
         loggedInFavorites: this.state.loggedInFavorites.concat(e)
       });
     }
+    // this.handlePersistFavorites();
   };
+
+  // handlePersistFavorites = e => {
+  //   let uniqueFavorites = [];
+  //   this.state.loggedInFavorites.map(favorite => {
+  //     if (!uniqueFavorites.includes(favorite)) {
+  //       return uniqueFavorites.push(favorite);
+  //     }
+  //   });
+  //   this.setState({
+  //     persistedFavorites: uniqueFavorites
+  //   });
+  // };
 
   handleDeletedFavorite = favorite => {
     console.log(favorite);

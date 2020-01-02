@@ -11,21 +11,37 @@ class UserInfo extends Component {
         userID: "",
         userName: "",
         userEmail: "",
-        favorites: []
+        favorites: [],
+        persistedFavorites: []
       },
       showEditForm: false
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      user: {
-        userID: this.props.userID,
-        userName: this.props.username,
-        userEmail: this.props.userEmail,
-        favorites: this.props.userFavorites
+  handlePersistFavorites = e => {
+    let uniqueFavorites = [];
+    this.state.user.favorites.map(favorite => {
+      if (!uniqueFavorites.includes(favorite)) {
+        return uniqueFavorites.push(favorite);
       }
     });
+    this.setState({
+      persistedFavorites: uniqueFavorites
+    });
+  };
+
+  componentDidMount() {
+    this.setState(
+      {
+        user: {
+          userID: this.props.userID,
+          userName: this.props.username,
+          userEmail: this.props.userEmail,
+          favorites: this.props.userFavorites
+        }
+      },
+      this.handlePersistFavorites()
+    );
   }
 
   editUserInfo = () => {
@@ -123,7 +139,7 @@ class UserInfo extends Component {
   };
 
   eachFavorite = () => {
-    return this.state.user.favorites.map((favorite, index) => {
+    return this.state.user.persistedFavorites.map((favorite, index) => {
       return (
         <li key={index}>
           {favorite.candidate.cand_name} (ID: {favorite.candidate.cid})
