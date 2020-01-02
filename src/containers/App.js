@@ -5,6 +5,7 @@ import Home from "../components/Home";
 import Search from "../components/Search";
 import User from "../components/User";
 import BrowseFavorites from "../components/BrowseFavorites";
+import "../App.css";
 
 class App extends React.Component {
   constructor() {
@@ -71,7 +72,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="appBody">
         <Router>
           {this.state.loggedIn !== false ? (
             <div>

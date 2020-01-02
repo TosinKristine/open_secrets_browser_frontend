@@ -143,9 +143,9 @@ class UserInfo extends Component {
     return (
       <div>
         <div className="userInfo">
-          <h1>User info...</h1>
+          <h1>USER INFO</h1>
           <h2>Your name: {this.state.user.userName}</h2>
-          <h3>Your email:{this.state.user.userEmail}</h3>
+          <h3>Your email: {this.state.user.userEmail}</h3>
           <h3>Your favorite searches:</h3>
           <ul>{this.eachFavorite()}</ul>
         </div>

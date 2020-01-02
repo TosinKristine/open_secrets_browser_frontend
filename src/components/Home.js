@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LogIn from "./LogIn";
 import CreateNewUser from "./CreateNewUser";
-import Test from "./ContributionChart";
+import "../App.css";
 
 class Home extends Component {
   constructor() {
@@ -48,12 +48,16 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="homeBody">
         <h1>Open Secrets Browser</h1>
+        <h4>
+          This program is based on the OpenSecrets.org, which tracks federal
+          campaign contributions.
+        </h4>
         {this.props.persistLogIn ? (
           <h2>Welcome, {this.props.loggedInUsername}</h2>
         ) : (
-          <div>
+          <div className="homeButtons">
             <LogIn
               loggedIn={this.handleLoggedIn}
               loggedInEmail={this.handleLoggedInEmail}

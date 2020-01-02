@@ -144,7 +144,7 @@ class Favorites extends Component {
   render() {
     return (
       <div>
-        <h1>Favorites</h1>
+        <h1>BROWSE FAVORITES</h1>
         {this.state.postedFavorites.length !== 0
           ? this.postedFavorites()
           : null}
