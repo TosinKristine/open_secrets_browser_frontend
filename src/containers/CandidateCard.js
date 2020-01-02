@@ -10,7 +10,7 @@ const CandidateCard = props => {
           <Card>
             <Card.Content>
               <Card.Header>{props.candidate_name}</Card.Header>
-              <Card.Meta>{props.candidate_id} </Card.Meta>
+              <Card.Meta>{props.cid} </Card.Meta>
               <Card.Meta>{props.candidate_cycle} </Card.Meta>
             </Card.Content>
             <br></br>
@@ -21,7 +21,7 @@ const CandidateCard = props => {
           ) : null} */}
             {props.userFavoriteStatus ? null : (
               <button
-                onClick={() => props.favorited(props.id)}
+                onClick={() => props.favorited(props.candidate_id)}
               >
                 Save this candidate to your favorites
               </button>
@@ -31,7 +31,7 @@ const CandidateCard = props => {
         {props.contributors ? (
           <Contributors
             contributors={props.contributors}
-            candidate_id={props.id}
+            candidate_id={props.candidate_id}
             candidate_name={props.candidate_name}
           />
         ) : null}

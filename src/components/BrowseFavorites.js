@@ -14,25 +14,27 @@ class Favorites extends Component {
 
   addToOwnFavorites = candidateId => {
     console.log(candidateId);
-    // fetch("http://localhost:4000/favorites", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     user_id: this.props.userId,
-    //     candidate_id: candidateId
-    //   })
-    // })
-    //   .then(resp => resp.json())
-    //   .then(json => {
-    //     console.log(json);
-    //     this.setState(
-    //       { userFavorites: this.state.userFavorites.concat(json) },
-    //       this.props.addUserFavorites(this.state.userFavorites)
-    //     );
-    //   });
+    console.log(this.props.userId);
+    fetch("http://localhost:4000/favorites", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user_id: this.props.userId,
+        candidate_id: candidateId
+      })
+    })
+      .then(resp => resp.json())
+      .then(json => {
+        console.log(json);
+        this.setState({
+           userFavorites: this.state.userFavorites.concat(json) }
+          
+        );
+        this.props.addUserFavorites(this.state.userFavorites)
+      });
   };
 
   componentDidMount() {
@@ -100,7 +102,8 @@ class Favorites extends Component {
         <div key={index}>
           <CandidateCard
             candidate_name={favorite.candidate_name}
-            candidate_id={favorite.cid}
+            cid={favorite.cid}
+            candidate_id={favorite.candidate_id}
             candidate_cycle={""}
             userFavoriteStatus={favorite.users_favorited.includes(
               this.props.userId
