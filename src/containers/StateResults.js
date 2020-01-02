@@ -5,12 +5,14 @@ const StateResults = props => {
   const renderResults = () => {
     return props.search_results.map(person => {
       return (
+        <div>
         <Card onClick={() => props.selectedPerson(person)}>
           <Card.Content>
             <Card.Header>{person.legislator_name}</Card.Header>
-            <Card.Meta>{person.cid}</Card.Meta>
+            <Card.Meta>Candidate ID: {person.cid}</Card.Meta>
           </Card.Content>
         </Card>
+        </div>
       );
     });
   };

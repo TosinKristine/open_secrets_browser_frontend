@@ -255,16 +255,16 @@ const stateOptions = [
 ];
 
 const StatesDropdown = props => (
-  <Select
-    placeholder="Select a State"
-    fluid
-    selection
-    options={stateOptions}
-    onChange={e => {
-      e.persist();
-      props.selectedState(e.target.textContent);
-    }}
-  />
+    <Select
+      placeholder="Select a State"
+      fluid
+      selection
+      options={stateOptions}
+      onChange={e => {
+        e.persist();
+        props.selectedState(e.target.textContent);
+      }}
+    />
 );
 
 export default StatesDropdown;

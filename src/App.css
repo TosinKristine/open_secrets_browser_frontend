@@ -9,12 +9,8 @@ body {
   width: 100%;
   margin: 0 auto;
 }
-.homeBody {
-  width: 100%;
-  margin: 0 auto;
-}
 
-.homeBody h1 {
+h1 {
   color: rgb(12, 12, 95);
   text-align: center;
   margin-top: 5px;
@@ -22,12 +18,10 @@ body {
 }
 
 .homeBody h2 {
-  color: rgb(104, 104, 224);
-  text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-.homeBody h4 {
+h4 {
   color: rgb(104, 104, 224);
   text-align: center;
   margin-bottom: 5px;
@@ -41,4 +35,37 @@ body {
 .appBody {
   width: 100%;
   margin: 0 auto;
+}
+
+h2 {
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+.searchForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin: 0px 5px;
+}
+
+.candidateSearchForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin: 0px 5px;
+}
+
+.searchBody {
+  margin-bottom: 20px;
+}
+
+.searchButtons {
+  height: 30px;
+}
+
+.allStateResultsCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 10px;
 }

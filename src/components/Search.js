@@ -149,31 +149,56 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Find candidate by state letters</h1>
-        <form onSubmit={this.handleLettersSubmit}>
-          <StatesDropdown selectedState={this.handleSelectedState} />
-          <input type="submit" value="Search"></input>
+      <div className="searchBody">
+        <h1>SEARCH</h1>
+        <h4>
+          On this page you can look up legislators by state, and then use their
+          ID number to find information about their financial contributors.
+        </h4>
+        <h2>Search for legislators by state</h2>
+        <h4>
+          Then, click on the legislator you're interested and click "Find
+          Contribution Information"
+        </h4>
+        <form onSubmit={this.handleLettersSubmit} className="searchForm">
+          <StatesDropdown
+            selectedState={this.handleSelectedState}
+            className="searchButtons"
+          />
+          <input
+            type="submit"
+            value="Search for Legislators"
+            className="searchButtons"
+          ></input>
         </form>
 
-        <StateResults
-          search_results={this.state.state_search_results}
-          selectedPerson={this.handleSelectedPerson}
-        />
-
+        <div className="allStateResultsCards">
+          <StateResults
+            search_results={this.state.state_search_results}
+            selectedPerson={this.handleSelectedPerson}
+          />
+        </div>
         {this.state.isLoadingState ? <LoaderExampleLoader /> : null}
 
-        <h1>Find financial information about a candidate</h1>
+        <h2>Find financial information about a candidate</h2>
         <form onSubmit={this.handleCandidateSubmit}>
-          <label>
-            Candidate ID:
+          <div className="candidateSearchForm">
+            {/* <label className="candidateID">
+              Candidate ID: */}
             <input
               type="text"
               value={this.state.candidate_search}
               onChange={this.handleCandidateChange}
+              placeholder="Candidate ID"
+              className="searchButtons"
             ></input>
-            <input type="submit" value="Search"></input>
-          </label>
+            {/* </label> */}
+            <input
+              type="submit"
+              value="Find Contribution Information"
+              className="searchButtons"
+            ></input>
+          </div>
         </form>
 
         {this.state.isLoadingCandidate ? <LoaderExampleLoader /> : null}
