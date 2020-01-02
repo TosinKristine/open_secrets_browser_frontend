@@ -23,7 +23,7 @@ class ContributionChart extends Component {
     };
 
     return (
-      <div>
+      <div className="contributionChart">
         <CanvasJSChart
           options={options}
           // onRef = {ref => this.chart = ref}

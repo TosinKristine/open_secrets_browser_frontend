@@ -100,10 +100,18 @@ h2 {
 }
 
 .userEdit {
-  grid-area: a
+  grid-area: a;
 }
 
 .userDelete {
-  grid-area: b
+  grid-area: b;
 }
 
+.contributionChart {
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.contributorsList h3 {
+  text-align: center;
+}

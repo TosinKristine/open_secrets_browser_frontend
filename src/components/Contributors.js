@@ -1,6 +1,7 @@
 import React from "react";
 // import { Card } from "semantic-ui-react";
 import ContributionChart from "./ContributionChart";
+import ContributorsList from "./ContributorsList";
 
 const Contributors = props => {
   const saveContributors = contributor => {
@@ -50,6 +51,7 @@ const Contributors = props => {
         contributors={props.contributors}
         candidate_name={props.candidate_name}
       />
+      <ContributorsList contributors={props.contributors}></ContributorsList>
     </>
   );
 };

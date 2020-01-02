@@ -6,6 +6,13 @@ const CandidateCard = props => {
   if (props.candidate_name !== "") {
     return (
       <>
+        {props.contributors ? (
+          <Contributors
+            contributors={props.contributors}
+            candidate_id={props.candidate_id}
+            candidate_name={props.candidate_name}
+          />
+        ) : null}
         <div className="candidateCard">
           <Card>
             <Card.Content>
@@ -20,21 +27,12 @@ const CandidateCard = props => {
             </button>
           ) : null} */}
             {props.userFavoriteStatus ? null : (
-              <button
-                onClick={() => props.favorited(props.candidate_id)}
-              >
+              <button onClick={() => props.favorited(props.candidate_id)}>
                 Save this candidate to your favorites
               </button>
             )}
           </Card>
         </div>
-        {props.contributors ? (
-          <Contributors
-            contributors={props.contributors}
-            candidate_id={props.candidate_id}
-            candidate_name={props.candidate_name}
-          />
-        ) : null}
       </>
     );
   } else {
