@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LoginModal from "./LoginModal";
 
 class LogIn extends Component {
   constructor() {
@@ -68,7 +69,16 @@ class LogIn extends Component {
   };
 
   render() {
-    return <div>{this.checkLoggedIn()}</div>;
+    return (
+      <div>
+        {this.checkLoggedIn()}
+        <LoginModal
+          loggedInEmail={this.state.loggedInEmail}
+          loginEmailChange={e => this.handleLoginEmailChange(e)}
+          submitLogin={e => this.handleSubmitLogIn(e)}
+        ></LoginModal>
+      </div>
+    );
   }
 }
 
