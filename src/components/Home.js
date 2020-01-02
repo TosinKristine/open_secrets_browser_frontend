@@ -49,7 +49,7 @@ class Home extends Component {
       <div>
         <h1>Open Secrets Browser</h1>
         {this.props.persistLogIn ? (
-          <h2>Welcome, {this.props.persistLogInEmail}</h2>
+          <h2>Welcome, {this.props.loggedInUsername}</h2>
         ) : (
           <div>
             <LogIn

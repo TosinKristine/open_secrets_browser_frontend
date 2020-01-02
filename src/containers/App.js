@@ -60,6 +60,15 @@ class App extends React.Component {
     });
   };
 
+  handleDeletedFavorite = favorite => {
+    console.log(favorite);
+    this.setState({
+      loggedInFavorites: this.state.loggedInFavorites.filter(each_favorite => {
+        return each_favorite !== favorite;
+      })
+    });
+  };
+
   // handleFavorites = e => {
   //   this.setState({
   //     loggedInFavorites: e
@@ -79,6 +88,7 @@ class App extends React.Component {
                 render={props => (
                   <Home
                     {...props}
+                    loggedInUsername={this.state.loggedInUsername}
                     handleApp={this.handleApp}
                     loggedIn={this.handleLoggedIn}
                     loggedInEmail={this.handleLoggedInEmail}
@@ -113,6 +123,7 @@ class App extends React.Component {
                     userID={this.state.loggedInId}
                     newUsername={this.handleUsername}
                     newUserEmail={this.handleLoggedInEmail}
+                    deletedFavorite={this.handleDeletedFavorite}
                   ></User>
                 )}
               ></Route>
@@ -139,6 +150,7 @@ class App extends React.Component {
                 render={props => (
                   <Home
                     {...props}
+                    loggedInUsername={this.state.loggedInUsername}
                     handleApp={this.handleApp}
                     loggedIn={this.handleLoggedIn}
                     loggedInEmail={this.handleLoggedInEmail}

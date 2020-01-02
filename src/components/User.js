@@ -103,15 +103,34 @@ class UserInfo extends Component {
     })
       .then(resp => resp.json())
       .then(json => {
-        this.setState({
-          user: {
-            ...this.state.user,
-            favorites: this.state.user.favorites.filter(each_favorite => {
-              return each_favorite !== favorite;
-            })
-          }
-        });
+        console.log(json);
+        console.log(favorite);
+        // this.setState(
+        //   {
+        //     user: {
+        //       ...this.state.user,
+        //       favorites: this.state.user.favorites.filter(each_favorite => {
+        //         return each_favorite !== favorite;
+        //       })
+        //     }
+        //   },
+        //   console.log(this.state.user)
+        // );
       });
+  };
+
+  changeFavoriteState = favorite => {
+    this.setState(
+      {
+        user: {
+          ...this.state.user,
+          favorites: this.state.user.favorites.filter(each_favorite => {
+            return each_favorite !== favorite;
+          })
+        }
+      },
+      this.props.deletedFavorite(favorite)
+    );
   };
 
   eachFavorite = () => {
@@ -119,7 +138,14 @@ class UserInfo extends Component {
       return (
         <li key={index}>
           {favorite.candidate.cand_name} (ID: {favorite.candidate.cid})
-          <button onClick={() => this.deleteFavorite(favorite)}>x</button>
+          <button
+            onClick={() => {
+              this.deleteFavorite(favorite);
+              this.changeFavoriteState(favorite);
+            }}
+          >
+            x
+          </button>
         </li>
       );
     });
