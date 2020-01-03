@@ -13,6 +13,7 @@ The frontend of this project was created using React, and styling was done using
 - Add the following gems to the Gemfile in the backend:
   - 'rack-cors'
   - 'active_model_serializers', '~> 0.10.0'
+  - 'pg'
 - Run `bundle install` in the backend repo
 - Run `rails s -p 4000` from the terminal in the backend
 - In the frontend, run:
@@ -20,6 +21,7 @@ The frontend of this project was created using React, and styling was done using
   - `npm install react-router-dom`
   - `npm install semantic-ui-react`
 - Run `npm start` from the terminal in the frontend
+- Postgres must be running in the background while working on this repository
 
 ## Contributors Guide
 
