@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import Menu from "../components/Menu";
-import Home from "../components/Home";
-import Search from "../components/Search";
-import User from "../components/User";
-import BrowseFavorites from "../components/BrowseFavorites";
+import Menu from "../presentational/Menu";
+import Home from "./Home";
+import Search from "./Search";
+import User from "./User";
+import BrowseFavorites from "./BrowseFavorites";
 import "../App.css";
 require("dotenv").config();
 
@@ -17,7 +17,6 @@ class App extends React.Component {
       loggedInId: "",
       loggedInFavorites: [],
       loggedInUsername: ""
-      // persistedFavorites: []
     };
   }
 
@@ -43,21 +42,17 @@ class App extends React.Component {
   };
 
   handleUsername = e => {
-    console.log(e);
     this.setState({
       loggedInUsername: e
     });
   };
 
   handleAddFavorite = e => {
-    console.log("in App.js/handleAddFavorite", e);
     let organizedFavoritesByCandidateId = [];
     this.state.loggedInFavorites.map(favorite => {
       organizedFavoritesByCandidateId.push(favorite.candidate.cid);
     });
-    console.log(organizedFavoritesByCandidateId);
     if (!organizedFavoritesByCandidateId.includes(e.candidate.cid)) {
-      console.log("it's not in here! ok to add.");
       this.setState({
         loggedInFavorites: this.state.loggedInFavorites.concat(e)
       });
@@ -65,44 +60,13 @@ class App extends React.Component {
   };
 
   handleBrowseFavorites = e => {
-    console.log(e);
     this.setState({
       ...this.state,
       loggedInFavorites: e
     });
   };
 
-  // handleNewUserFavorite = e => {
-  //   console.log("in App.js/handleNewUserFavorite", e);
-  //   if (!this.state.loggedInFavorites.includes(e)) {
-  //     let uniqueFavorites = [];
-  //     this.state.loggedInFavorites.map(favorite => {
-  //       if (!uniqueFavorites.includes(favorite)) {
-  //         return uniqueFavorites.push(favorite);
-  //       }
-  //     });
-  //     console.log("uniqueFavorites...", uniqueFavorites);
-  //     this.setState({
-  //       loggedInFavorites: this.state.loggedInFavorites.concat(e)
-  //     });
-  //   }
-  //   // this.handlePersistFavorites();
-  // };
-
-  // handlePersistFavorites = e => {
-  //   let uniqueFavorites = [];
-  //   this.state.loggedInFavorites.map(favorite => {
-  //     if (!uniqueFavorites.includes(favorite)) {
-  //       return uniqueFavorites.push(favorite);
-  //     }
-  //   });
-  //   this.setState({
-  //     persistedFavorites: uniqueFavorites
-  //   });
-  // };
-
   handleDeletedFavorite = favorite => {
-    console.log(favorite);
     this.setState({
       loggedInFavorites: this.state.loggedInFavorites.filter(each_favorite => {
         return each_favorite !== favorite;

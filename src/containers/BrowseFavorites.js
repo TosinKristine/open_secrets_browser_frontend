@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CandidateCard from "../containers/CandidateCard";
-import ContributionChart from "./ContributionChart";
+import CandidateCard from "../presentational/CandidateCard";
+import ContributionChart from "../presentational/ContributionChart";
 
 class Favorites extends Component {
   constructor() {
@@ -26,14 +26,11 @@ class Favorites extends Component {
     })
       .then(resp => resp.json())
       .then(json => {
-        console.log("in BrowseFavorites/addtoownfavorites", json);
         let organizedFavoritesByCandidateId = [];
         this.state.userFavorites.map(favorite => {
           organizedFavoritesByCandidateId.push(favorite.candidate.cid);
         });
-        console.log(organizedFavoritesByCandidateId);
         if (!organizedFavoritesByCandidateId.includes(json.candidate.cid)) {
-          console.log("it's not in here! ok to add.");
           this.setState({
             userFavorites: this.state.userFavorites.concat(json)
           });

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LoginModal from "./LoginModal";
+import LoginModal from "../presentational/LoginModal";
 
 class LogIn extends Component {
   constructor() {

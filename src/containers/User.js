@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import EditUserInfoModal from "./EditUserInfoModal";
-import DeleteUserModal from "./DeleteUserModal";
+import DeleteUserModal from "../presentational/DeleteUserModal";
 
 class UserInfo extends Component {
   constructor() {
@@ -20,7 +20,6 @@ class UserInfo extends Component {
 
   handlePersistFavorites = e => {
     let uniqueFavorites = [];
-    console.log(this.props.userFavorites);
     this.state.user.favorites.map(favorite => {
       if (!uniqueFavorites.includes(favorite)) {
         return uniqueFavorites.push(favorite);
@@ -116,11 +115,7 @@ class UserInfo extends Component {
       body: JSON.stringify({
         id: favorite.id
       })
-    })
-      .then(resp => resp.json())
-      .then(json => {
-        console.log(json);
-      });
+    }).then(resp => resp.json());
   };
 
   changeFavoriteState = favorite => {
@@ -138,9 +133,6 @@ class UserInfo extends Component {
   };
 
   eachFavorite = () => {
-    // {
-    //   this.handlePersistFavorites();
-    // }
     return this.state.user.favorites.map((favorite, index) => {
       return (
         <li key={index}>

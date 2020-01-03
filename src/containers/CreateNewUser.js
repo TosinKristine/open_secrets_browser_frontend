@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NewUserModal from "./NewUserModal";
+import NewUserModal from "../presentational/NewUserModal";
 
 class CreateNewUser extends Component {
   constructor() {

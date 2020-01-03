@@ -1,8 +1,8 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
-import Contributors from "../components/Contributors";
-import SaveToFavoritesButton from "../components/SaveToFavoritesButton";
-import ContributionChartModal from "../components/ContributionChartModal";
+import Contributors from "./Contributors";
+import SaveToFavoritesButton from "./SaveToFavoritesButton";
+import ContributionChartModal from "../containers/ContributionChartModal";
 
 const CandidateCard = props => {
   if (props.candidate_name !== "") {

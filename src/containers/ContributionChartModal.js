@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal } from "semantic-ui-react";
-import ContributionChart from "./ContributionChart";
+import ContributionChart from "../presentational/ContributionChart";
 
 class ContributionChartModal extends Component {
   constructor() {

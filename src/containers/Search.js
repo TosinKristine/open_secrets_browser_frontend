@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import CandidateCard from "../containers/CandidateCard";
-import StateResults from "../containers/StateResults";
-import StatesDropdown from "./StatesDropdown";
-import LoaderExampleLoader from "./Loader";
+import CandidateCard from "../presentational/CandidateCard";
+import StateResults from "../presentational/StateResults";
+import StatesDropdown from "../presentational/StatesDropdown";
+import LoaderExampleLoader from "../presentational/Loader";
 
 class Search extends Component {
   constructor() {
@@ -124,7 +124,6 @@ class Search extends Component {
   };
 
   favorited = candidateId => {
-    console.log("inSearch.js/favorited", candidateId);
     fetch("http://localhost:4000/favorites", {
       method: "POST",
       headers: {
@@ -138,7 +137,6 @@ class Search extends Component {
     })
       .then(resp => resp.json())
       .then(json => {
-        console.log(json);
         this.props.addFavorite(json);
       });
   };
@@ -148,7 +146,6 @@ class Search extends Component {
   };
 
   handleSelectedPerson = e => {
-    console.log(e);
     this.setState({ candidate_search: e.cid });
   };
 
