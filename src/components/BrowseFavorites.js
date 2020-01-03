@@ -26,10 +26,19 @@ class Favorites extends Component {
     })
       .then(resp => resp.json())
       .then(json => {
-        this.setState({
-          userFavorites: this.state.userFavorites.concat(json)
+        console.log("in BrowseFavorites/addtoownfavorites", json);
+        let organizedFavoritesByCandidateId = [];
+        this.state.userFavorites.map(favorite => {
+          organizedFavoritesByCandidateId.push(favorite.candidate.cid);
         });
-        this.props.addUserFavorites(this.state.userFavorites);
+        console.log(organizedFavoritesByCandidateId);
+        if (!organizedFavoritesByCandidateId.includes(json.candidate.cid)) {
+          console.log("it's not in here! ok to add.");
+          this.setState({
+            userFavorites: this.state.userFavorites.concat(json)
+          });
+          this.props.addUserFavorites(this.state.userFavorites);
+        }
       });
   };
 

@@ -52,12 +52,11 @@ class App extends React.Component {
   handleAddFavorite = e => {
     console.log("in App.js/handleAddFavorite", e);
     let organizedFavoritesByCandidateId = [];
-    let userFavorites = [];
     this.state.loggedInFavorites.map(favorite => {
-      organizedFavoritesByCandidateId.push(favorite.candidate_id);
+      organizedFavoritesByCandidateId.push(favorite.candidate.cid);
     });
     console.log(organizedFavoritesByCandidateId);
-    if (!organizedFavoritesByCandidateId.includes(e.candidate_id)) {
+    if (!organizedFavoritesByCandidateId.includes(e.candidate.cid)) {
       console.log("it's not in here! ok to add.");
       this.setState({
         loggedInFavorites: this.state.loggedInFavorites.concat(e)
@@ -65,22 +64,30 @@ class App extends React.Component {
     }
   };
 
-  handleNewUserFavorite = e => {
-    console.log("in App.js/handleNewUserFavorite", e);
-    if (!this.state.loggedInFavorites.includes(e)) {
-      let uniqueFavorites = [];
-      this.state.loggedInFavorites.map(favorite => {
-        if (!uniqueFavorites.includes(favorite)) {
-          return uniqueFavorites.push(favorite);
-        }
-      });
-      console.log("uniqueFavorites...", uniqueFavorites);
-      this.setState({
-        loggedInFavorites: this.state.loggedInFavorites.concat(e)
-      });
-    }
-    // this.handlePersistFavorites();
+  handleBrowseFavorites = e => {
+    console.log(e);
+    this.setState({
+      ...this.state,
+      loggedInFavorites: e
+    });
   };
+
+  // handleNewUserFavorite = e => {
+  //   console.log("in App.js/handleNewUserFavorite", e);
+  //   if (!this.state.loggedInFavorites.includes(e)) {
+  //     let uniqueFavorites = [];
+  //     this.state.loggedInFavorites.map(favorite => {
+  //       if (!uniqueFavorites.includes(favorite)) {
+  //         return uniqueFavorites.push(favorite);
+  //       }
+  //     });
+  //     console.log("uniqueFavorites...", uniqueFavorites);
+  //     this.setState({
+  //       loggedInFavorites: this.state.loggedInFavorites.concat(e)
+  //     });
+  //   }
+  //   // this.handlePersistFavorites();
+  // };
 
   // handlePersistFavorites = e => {
   //   let uniqueFavorites = [];
@@ -163,7 +170,7 @@ class App extends React.Component {
                     {...props}
                     userId={this.state.loggedInId}
                     userFavorites={this.state.loggedInFavorites}
-                    addUserFavorites={this.handleNewUserFavorite}
+                    addUserFavorites={this.handleBrowseFavorites}
                   ></BrowseFavorites>
                 )}
               ></Route>
