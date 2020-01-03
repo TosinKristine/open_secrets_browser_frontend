@@ -124,6 +124,7 @@ class Search extends Component {
   };
 
   favorited = candidateId => {
+    console.log("inSearch.js/favorited", candidateId);
     fetch("http://localhost:4000/favorites", {
       method: "POST",
       headers: {

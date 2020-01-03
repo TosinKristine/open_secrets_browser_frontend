@@ -50,18 +50,31 @@ class App extends React.Component {
   };
 
   handleAddFavorite = e => {
-    console.log(e);
-    if (!this.state.loggedInFavorites.includes(e)) {
+    console.log("in App.js/handleAddFavorite", e);
+    let organizedFavoritesByCandidateId = [];
+    let userFavorites = [];
+    this.state.loggedInFavorites.map(favorite => {
+      organizedFavoritesByCandidateId.push(favorite.candidate_id);
+    });
+    console.log(organizedFavoritesByCandidateId);
+    if (!organizedFavoritesByCandidateId.includes(e.candidate_id)) {
+      console.log("it's not in here! ok to add.");
       this.setState({
         loggedInFavorites: this.state.loggedInFavorites.concat(e)
       });
     }
-    // this.handlePersistFavorites();
   };
 
   handleNewUserFavorite = e => {
-    console.log(e);
+    console.log("in App.js/handleNewUserFavorite", e);
     if (!this.state.loggedInFavorites.includes(e)) {
+      let uniqueFavorites = [];
+      this.state.loggedInFavorites.map(favorite => {
+        if (!uniqueFavorites.includes(favorite)) {
+          return uniqueFavorites.push(favorite);
+        }
+      });
+      console.log("uniqueFavorites...", uniqueFavorites);
       this.setState({
         loggedInFavorites: this.state.loggedInFavorites.concat(e)
       });
