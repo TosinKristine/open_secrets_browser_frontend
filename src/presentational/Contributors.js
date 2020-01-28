@@ -4,7 +4,7 @@ import ContributorsList from "./ContributorsList";
 
 const Contributors = props => {
   const saveContributors = contributor => {
-    fetch("http://localhost:4000/contributors", {
+    fetch("https://open-secrets-project-backend.herokuapp.com/contributors", {
       method: "POST",
       headers: {
         Accept: "application/json",

@@ -71,19 +71,22 @@ class Search extends Component {
             contributors: contributors
           },
           () => {
-            fetch("http://localhost:4000/candidates", {
-              method: "POST",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                ...this.state.candidate,
-                cand_name: this.state.candidate.candidate_name,
-                cid: this.state.candidate.candidate_id,
-                cycle: this.state.candidate.candidate_cycle
-              })
-            })
+            fetch(
+              "https://open-secrets-project-backend.herokuapp.com/candidates",
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                  ...this.state.candidate,
+                  cand_name: this.state.candidate.candidate_name,
+                  cid: this.state.candidate.candidate_id,
+                  cycle: this.state.candidate.candidate_cycle
+                })
+              }
+            )
               .then(resp => resp.json())
               .then(json => {
                 this.setState({
@@ -124,7 +127,7 @@ class Search extends Component {
   };
 
   favorited = candidateId => {
-    fetch("http://localhost:4000/favorites", {
+    fetch("https://open-secrets-project-backend.herokuapp.com/favorites", {
       method: "POST",
       headers: {
         Accept: "application/json",

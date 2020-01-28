@@ -10,7 +10,7 @@ class ContributionChartModal extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://localhost:4000/candidates")
+    fetch("https://open-secrets-project-backend.herokuapp.com/candidates")
       .then(resp => resp.json())
       .then(json => {
         let result = json.filter(person => {

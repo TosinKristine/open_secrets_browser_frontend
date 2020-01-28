@@ -13,7 +13,7 @@ class Favorites extends Component {
   }
 
   addToOwnFavorites = candidateId => {
-    fetch("http://localhost:4000/favorites", {
+    fetch("https://open-secrets-project-backend.herokuapp.com/favorites", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -40,7 +40,7 @@ class Favorites extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:4000/favorites")
+    fetch("https://open-secrets-project-backend.herokuapp.com/favorites")
       .then(resp => resp.json())
       .then(favorites => {
         this.setState({
@@ -75,7 +75,7 @@ class Favorites extends Component {
   };
 
   fetchCandidateContributors = favorite => {
-    fetch("http://localhost:4000/candidates")
+    fetch("https://open-secrets-project-backend.herokuapp.com/candidates")
       .then(resp => resp.json())
       .then(json => {
         let result = json.filter(person => {

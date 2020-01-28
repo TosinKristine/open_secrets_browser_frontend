@@ -24,7 +24,7 @@ class CreateNewUser extends Component {
 
   handleSubmitCreateUser = e => {
     e.preventDefault();
-    fetch("http://localhost:4000/users", {
+    fetch("https://open-secrets-project-backend.herokuapp.com/users", {
       method: "POST",
       headers: {
         Accept: "application/json",

@@ -28,17 +28,21 @@ class EditUserInfoModal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    fetch("http://localhost:4000/users/" + this.props.userID, {
-      method: "PATCH",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        name: this.state.editedName,
-        email: this.state.editedEmail
-      })
-    })
+    fetch(
+      "https://open-secrets-project-backend.herokuapp.com/users/" +
+        this.props.userID,
+      {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: this.state.editedName,
+          email: this.state.editedEmail
+        })
+      }
+    )
       .then(response => response.json())
       .then(json => {
         this.props.newUserName(this.state.editedName);

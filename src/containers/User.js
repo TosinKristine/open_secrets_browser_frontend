@@ -63,15 +63,19 @@ class UserInfo extends Component {
   };
 
   deleteUser = () => {
-    fetch("http://localhost:4000/users/" + this.state.user.userID, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        id: this.state.user.userID
-      })
-    })
+    fetch(
+      "https://open-secrets-project-backend.herokuapp.com/users/" +
+        this.state.user.userID,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id: this.state.user.userID
+        })
+      }
+    )
       .then(resp => resp.json())
       .then(json => this.props.deleted(true));
   };
@@ -107,15 +111,19 @@ class UserInfo extends Component {
   };
 
   deleteFavorite = favorite => {
-    fetch("http://localhost:4000/favorites/" + favorite.id, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        id: favorite.id
-      })
-    }).then(resp => resp.json());
+    fetch(
+      "https://open-secrets-project-backend.herokuapp.com/favorites/" +
+        favorite.id,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id: favorite.id
+        })
+      }
+    ).then(resp => resp.json());
   };
 
   changeFavoriteState = favorite => {

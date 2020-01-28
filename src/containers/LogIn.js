@@ -22,7 +22,7 @@ class LogIn extends Component {
 
   handleSubmitLogIn = e => {
     e.preventDefault();
-    fetch("http://localhost:4000/users")
+    fetch("https://open-secrets-project-backend.herokuapp.com/users")
       .then(resp => resp.json())
       .then(users => {
         let foundUser = users.filter(
