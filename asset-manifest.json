@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/open_secrets_browser_frontend/static/css/main.45a8b9ca.chunk.css",
+    "main.js": "/open_secrets_browser_frontend/static/js/main.2d3ecea1.chunk.js",
+    "main.js.map": "/open_secrets_browser_frontend/static/js/main.2d3ecea1.chunk.js.map",
+    "runtime-main.js": "/open_secrets_browser_frontend/static/js/runtime-main.7f6f80da.js",
+    "runtime-main.js.map": "/open_secrets_browser_frontend/static/js/runtime-main.7f6f80da.js.map",
+    "static/js/2.9b9057f1.chunk.js": "/open_secrets_browser_frontend/static/js/2.9b9057f1.chunk.js",
+    "static/js/2.9b9057f1.chunk.js.map": "/open_secrets_browser_frontend/static/js/2.9b9057f1.chunk.js.map",
+    "index.html": "/open_secrets_browser_frontend/index.html",
+    "precache-manifest.153f7eb67542458e2f6c5e30618583c8.js": "/open_secrets_browser_frontend/precache-manifest.153f7eb67542458e2f6c5e30618583c8.js",
+    "service-worker.js": "/open_secrets_browser_frontend/service-worker.js",
+    "static/css/main.45a8b9ca.chunk.css.map": "/open_secrets_browser_frontend/static/css/main.45a8b9ca.chunk.css.map",
+    "static/js/2.9b9057f1.chunk.js.LICENSE": "/open_secrets_browser_frontend/static/js/2.9b9057f1.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7f6f80da.js",
+    "static/js/2.9b9057f1.chunk.js",
+    "static/css/main.45a8b9ca.chunk.css",
+    "static/js/main.2d3ecea1.chunk.js"
+  ]
+}
